@@ -1,5 +1,5 @@
 <?php
-$id = $_GET['id'];
+$akun_id = $_GET['akun_id'];
 $user = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM users WHERE id = $id"), MYSQLI_ASSOC);
 foreach ($user as $i);
 ?>

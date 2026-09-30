@@ -15,7 +15,7 @@ if ($is_there == false) {
     echo"<script>alert('Ada yang salah, Mohon di cek kembali'); window.location.href='../../login.php'</script>";
 }
 if ($is_there == true) {
-    echo"<script>alert('Login Berhasil'); window.location.href='../../main_menu.php?id=$id'</script>";
+    echo"<script>alert('Login Berhasil'); window.location.href='../../main_menu.php?akun_id=$id'</script>";
 }
 
 ?>

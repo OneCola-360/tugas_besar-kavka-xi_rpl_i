@@ -1,6 +1,7 @@
 <?php 
 require("../../konek.php");
 include("header.php");
+$akun_id = $_POST['akun_id'];
 
 $id = $_POST['id'];
 $role = $_POST['role'];
@@ -16,43 +17,7 @@ if ($password == $org_pass):
     if ($role == "siswa") {
         mysqli_query($konek, "UPDATE siswa SET nis = '$role', nama = '" . $_POST['nama'] . "', kelas = '" . $_POST['kelas'] . "',jenis_kelamin = '" . $_POST['jk'] . "'  WHERE siswa.user_id = $id");
     }
-?>
-    <body>
-        <div class="container mt-5" style="width=50%">
-            <div class="card shadow">
-                <div class="card-header">
-                    <h3>Data berhasil diubah</h3>
-                </div>
-                <div class="card-body">
-                    <form action="../../tabel/users.php">
-                        <div class="mb-3">
-                            <button class="btn btn-primary" type="submit">Kembali</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
-<?php 
+    echo "<script>alert('Data Berhasil Ditambahkan'); window.location.href='../../tabel/users.php?akun_id=$akun_id'</script>";
 else:
-?>
-<body>
-        <div class="container mt-5" style="width=50%">
-            <div class="card shadow">
-                <div class="card-header">
-                    <h3>Data gagal diubah</h3>
-                </div>
-                <div class="card-body">
-                    <h5>Password Salah</h5>
-                    <form action="../../tabel/users.php">
-                        <div class="mb-3">
-                            <button class="btn btn-primary" type="submit">Kembali</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
-<?php endif; ?>
+echo "<script>alert('Data Gagal Ditambahkan'); window.location.href='../../tabel/users.php?akun_id=$akun_id'</script>";
+endif; ?>
