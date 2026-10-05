@@ -1,6 +1,5 @@
 <?php
 require("../../konek.php");
-$akun_id = $_POST['akun_id'];
 $siswa = $_POST['siswa'];
 $mapel = $_POST['mapel'];
 $keterangan = $_POST['keterangan'];
@@ -13,5 +12,5 @@ foreach ($sqlrapor as $idrapor);
 $id = $idrapor + 1;
 
 mysqli_query($konek, "INSERT INTO nilai_rapor (id, siswa_id, mapel_id, nilai_kkm, nilai_pengetahuan, nilai_keterampilan, keterangan) VALUE ($id, $siswa, $mapel, $kkm, $pengetahuan, $keterampilan, '$keterangan')");
-echo "<script>alert('Data Berhasil Ditambahkan'); window.location.href='../../tabel/nilai_siswa.php?akun_id=$akun_id'</script>";
+echo "<script>alert('Data Berhasil Ditambahkan'); window.location.href='../../tabel/nilai_siswa.php'</script>";
 ?>

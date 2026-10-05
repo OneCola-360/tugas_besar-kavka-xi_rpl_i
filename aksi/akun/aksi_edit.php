@@ -1,7 +1,6 @@
 <?php 
 require("../../konek.php");
 include("header.php");
-$akun_id = $_POST['akun_id'];
 
 $id = $_POST['id'];
 $role = $_POST['role'];
@@ -17,7 +16,7 @@ if ($password == $org_pass):
     if ($role == "siswa") {
         mysqli_query($konek, "UPDATE siswa SET nis = '$role', nama = '" . $_POST['nama'] . "', kelas = '" . $_POST['kelas'] . "',jenis_kelamin = '" . $_POST['jk'] . "'  WHERE siswa.user_id = $id");
     }
-    echo "<script>alert('Data Berhasil Ditambahkan'); window.location.href='../../tabel/users.php?akun_id=$akun_id'</script>";
+    echo "<script>alert('Data Berhasil Ditambahkan'); window.location.href='../../tabel/users.php'</script>";
 else:
-echo "<script>alert('Data Gagal Ditambahkan'); window.location.href='../../tabel/users.php?akun_id=$akun_id'</script>";
+echo "<script>alert('Data Gagal Ditambahkan'); window.location.href='../../tabel/users.php'</script>";
 endif; ?>

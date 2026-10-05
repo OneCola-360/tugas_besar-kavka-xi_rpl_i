@@ -1,7 +1,6 @@
 <?php 
 include("header.php");
 
-$akun_id = $_GET['akun_id'];
 $id = $_GET['id'];
 $role = $_GET['role'] ?? 'admin';
 if ($role == 'admin'):
@@ -29,7 +28,6 @@ if ($role == 'admin'):
                 </div>
                 <input type="text" value="admin" style="display: none;" name="role" id="role">
                 <input type="text" value="<?= $id; ?>" style="display: none;" name="id" id="id" readonly>
-                <input type="text" value="<?= $akun_id; ?>" style="display: none;" name="akun_id" id="akun_id" readonly>
                 <input type="text" value="<?= $_GET['password']; ?>" style="display: none;" name="org_pass" id="org_pass" readonly>
             </form>
         </div>
@@ -103,7 +101,6 @@ elseif ($role == 'siswa'):
                 </div>
                 <input type="text" value="siswa" style="display: none;" name="role" id="role">
                 <input type="text" value="<?= $id; ?>" style="display: none;" name="id" id="id" readonly>
-                <input type="text" value="<?= $akun_id; ?>" style="display: none;" name="akun_id" id="akun_id" readonly>
                 <input type="text" value="<?= $_GET['password']; ?>" style="display: none;" name="org_pass" id="org_pass" readonly>
             </form>
         </div>
@@ -161,7 +158,6 @@ elseif ($role == 'siswa'):
                 </div>
                 <input type="text" value="guru" style="display: none;" name="role" id="role">
                 <input type="text" value="<?= $id; ?>" style="display: none;" name="id" id="id" readonly>
-                <input type="text" value="<?= $akun_id; ?>" style="display: none;" name="akun_id" id="akun_id" readonly>
                 <input type="text" value="<?= $_GET['password']; ?>" style="display: none;" name="org_pass" id="org_pass" readonly>
             </form>
         </div>

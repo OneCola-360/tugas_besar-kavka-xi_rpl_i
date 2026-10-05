@@ -1,5 +1,6 @@
 <?php 
-$id = $_GET['id'];
+session_start();
+$id = $_SESSION['akun_id'];
 ?>
 <!DOCTYPE html>
 <html>

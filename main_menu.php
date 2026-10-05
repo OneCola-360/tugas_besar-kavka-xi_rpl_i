@@ -1,6 +1,7 @@
 <?php 
 require("konek.php");
-$id = $_GET['akun_id'];
+session_start();
+$id = $_SESSION['akun_id'];
 $sqlrole = mysqli_fetch_all(mysqli_query($konek, "SELECT role FROM users WHERE id = $id"), MYSQL_ASSOC);
 foreach ($sqlrole as $role);
 ?>
@@ -73,7 +74,7 @@ $sqlsiswa = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM siswa"));
                                         <td><?= $i['nama']; ?></td>
                                         <td><?= $i['kelas']; ?></td>
                                         <td>
-                                            <a href="tabel/nilai_siswa.php?siswa_id=<?= $i['id'] ?>&&akun_id=<?= $id ?>" class="btn btn-warning btn-sm">Lihat Nilai Rapor Siswa</a>
+                                            <a href="tabel/nilai_siswa.php?siswa_id=<?= $i['id'] ?>" class="btn btn-warning btn-sm">Lihat Nilai Rapor Siswa</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -107,13 +108,13 @@ if ($role == "admin"):
                             <h5>Tabel User</h5>
                             <div class="mb-3">
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a href="tabel/users.php?akun_id=<?= $akun_id ?>" class="btn btn-outline-primary">Tabel User</a>
+                                    <a href="tabel/users.php" class="btn btn-outline-primary">Tabel User</a>
                                 </div>
                             </div>
                             <h5>Tabel Mapel</h5>
                             <div class="mb3">
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a href="tabel/mapel.php?akun_id=<?= $akun_id ?>" class="btn btn-outline-primary">Tabel Mapel</a>
+                                    <a href="tabel/mapel.php" class="btn btn-outline-primary">Tabel Mapel</a>
                                 </div>
                             </div>
                         </div>
@@ -129,15 +130,15 @@ if ($role == "admin"):
                             <h5>Buat Akun</h5>
                             <div class="mb-3">
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a href="create_new/siswa_input.php?akun_id=<?= $akun_id ?>" class="btn btn-outline-warning">Buat Akun Siswa</a>
-                                    <a href="create_new/guru_input.php?akun_id=<?= $akun_id ?>" class="btn btn-outline-warning">Buat Akun Guru</a>
-                                    <a href="create_new/admin_input.php?akun_id=<?= $akun_id ?>" class="btn btn-outline-warning">Buat Akun Admin</a>
+                                    <a href="create_new/siswa_input.php" class="btn btn-outline-warning">Buat Akun Siswa</a>
+                                    <a href="create_new/guru_input.php" class="btn btn-outline-warning">Buat Akun Guru</a>
+                                    <a href="create_new/admin_input.php" class="btn btn-outline-warning">Buat Akun Admin</a>
                                 </div>
                             </div>
                             <h5>Buat Data Mapel</h5>
                             <div class="mb-3">
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a href="create_new/mapel_input.php?akun_id=<?= $akun_id ?>" class="btn btn-outline-success">Buat Mapel</a>
+                                    <a href="create_new/mapel_input.php" class="btn btn-outline-success">Buat Mapel</a>
                                 </div>
                             </div>
                         </div>

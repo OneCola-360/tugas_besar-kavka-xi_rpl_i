@@ -1,5 +1,4 @@
 <?php 
-$akun_id = $_GET['akun_id'];
 $id = $_GET['id'];
 $kkm = $_GET['kkm'];
 $mapel = $_GET['mapel'];
@@ -38,7 +37,6 @@ $keterangan = $_GET['keterangan'];
                     <button type="reset" class="btn btn-secondary">Hapus</button>
                 </div>
                 <input type="text" value="<?= $id ?>" style="display: none;" name="id" id="id" readonly>
-                <input type="text" value="<?= $akun_id ?>" style="display: none;" name="akun_id" id="akun_id" readonly>
             </form>
         </div>
     </div>

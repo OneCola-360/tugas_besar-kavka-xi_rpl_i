@@ -1,8 +1,6 @@
 <?php
 include("../konek.php");
 
-$akun_id = $_GET['akun_id'];
-
 $sql = "SELECT mapel.id, kode_mapel, mapel.nama, guru_id, guru.nama AS nama_guru
 FROM mapel
 LEFT JOIN guru ON mapel.guru_id = guru.id
@@ -38,8 +36,8 @@ $o = 1;
                                         <td><?= $i['nama']; ?></td>
                                         <td><?= $i['nama_guru']; ?></td>
                                         <td>
-                                            <a href="../form_manip/form_edit_mapel.php?id=<?= $i['id']; ?>&&kode=<?= $i['kode_mapel']; ?>&&nama=<?= $i['nama']; ?>&&guru=<?= $i['nama_guru']; ?>&&akun_id=<?= $akun_id ?>" class="btn btn-warning btn-sm">Edit</a>
-                                            <a href="../aksi/mapel/aksi_hapus.php?id=<?= $i['id']; ?>&&akun_id=<?= $akun_id ?>" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm">Hapus</a>
+                                            <a href="../form_manip/form_edit_mapel.php?id=<?= $i['id']; ?>&&kode=<?= $i['kode_mapel']; ?>&&nama=<?= $i['nama']; ?>&&guru=<?= $i['nama_guru']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="../aksi/mapel/aksi_hapus.php?id=<?= $i['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm">Hapus</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

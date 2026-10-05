@@ -1,6 +1,5 @@
 <?php
 require("../konek.php");
-$akun_id = $_GET['akun_id'];
 $sqlsiswa = mysqli_fetch_all(mysqli_query($konek, "SELECT id, nama FROM siswa"));
 $sqlmapel = mysqli_fetch_all(mysqli_query($konek, "SELECT id, nama FROM mapel"));
 ?>
@@ -52,7 +51,6 @@ $sqlmapel = mysqli_fetch_all(mysqli_query($konek, "SELECT id, nama FROM mapel"))
                     <button type="submit" class="btn btn-primary">Simpan</button>
                     <button type="reset" class="btn btn-secondary">Hapus</button>
                 </div>
-                <input type="text" value="<?= $akun_id ?>" style="display: none;" name="akun_id" id="akun_id" readonly>
             </form>
         </div>
     </div>

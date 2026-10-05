@@ -1,6 +1,5 @@
 <?php
 require("../../konek.php");
-$akun_id = $_GET['akun_id'];
 $id = $_GET['id'];
 $role = $_GET['role'];
 
@@ -11,23 +10,23 @@ if ($role == "guru") {
     if (mysqli_query($konek, "DELETE users, guru FROM users JOIN guru ON users.id = guru.user_id WHERE users.id = $id")) {
         echo"<script>alert('User berhasil dihapus'); window.location.href='../../tabel/users.php?akun_id=$akun_id'</script>";
     } else {
-        echo"<script>alert('User gagal dihapus'); window.location.href='../../tabel/users.php?akun_id=$akun_id'</script>";
+        echo"<script>alert('User gagal dihapus'); window.location.href='../../tabel/users.php'</script>";
     }
 } 
 if ($role == "admin") {
     mysqli_query($konek, "DELETE FROM users WHERE users.id =" . $id);
     if (mysqli_query($konek, "DELETE FROM users WHERE users.id =" . $id)) {
-        echo"<script>alert('User berhasil dihapus'); window.location.href='../../tabel/users.php?akun_id=$akun_id'</script>";
+        echo"<script>alert('User berhasil dihapus'); window.location.href='../../tabel/users.php'</script>";
     } else {
-        echo"<script>alert('User gagal dihapus'); window.location.href='../../tabel/users.php?akun_id=$akun_id'</script>";
+        echo"<script>alert('User gagal dihapus'); window.location.href='../../tabel/users.php'</script>";
     }
 } 
 if ($role == "siswa") {
     mysqli_query($konek, "DELETE users, siswa FROM users JOIN siswa ON users.id = siswa.user_id WHERE users.id =" . $id);
     if (mysqli_query($konek, "DELETE users, siswa FROM users JOIN siswa ON users.id = siswa.user_id WHERE users.id =" . $id)) {
-        echo"<script>alert('User berhasil dihapus'); window.location.href='../../tabel/users.php?akun_id=$akun_id'</script>";
+        echo"<script>alert('User berhasil dihapus'); window.location.href='../../tabel/users.php'</script>";
     } else {
-        echo"<script>alert('User gagal dihapus'); window.location.href='../../tabel/users.php?akun_id=$akun_id'</script>";
+        echo"<script>alert('User gagal dihapus'); window.location.href='../../tabel/users.php'</script>";
     }
 }
 ?>

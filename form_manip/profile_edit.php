@@ -1,6 +1,7 @@
 <?php 
+session_start();
 $username = $_GET['username'];
-$id = $_GET['id'];
+$id = $_SESSION['akun_id'];
 $password = $_GET['password'];
 ?>
 <!DOCTYPE html>
