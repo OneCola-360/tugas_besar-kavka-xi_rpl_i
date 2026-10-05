@@ -7,7 +7,7 @@ $nama = $_GET['nama'];
 $id = $_GET['id'];
 $guru = $_GET['guru'];
 $sqlguru = "SELECT nama, id FROM guru";
-$gurus = mysqli_query($konek, $sqlguru);
+$gurus = mysqli_fetch_all(mysqli_query($konek, $sqlguru), MYSQL_ASSOC);
 ?>
 <body class="bg-light">
 <div class="container mt-5" style="width=50%">

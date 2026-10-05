@@ -12,7 +12,7 @@ foreach ($sqlrole as $role);
     </head>
 <?php
 if ($role == "siswa"):
-$sqlnilai = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (siswa.nama) AS nama, COALESCE (mapel.nama) AS nama_mapel FROM nilai_rapor LEFT JOIN siswa ON nilai_rapor.siswa_id = siswa.id LEFT JOIN mapel ON nilai_rapor.mapel_id = mapel.id WHERE siswa_id = $id"));
+$sqlnilai = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (siswa.nama) AS nama, COALESCE (mapel.nama) AS nama_mapel FROM nilai_rapor LEFT JOIN siswa ON nilai_rapor.siswa_id = siswa.id LEFT JOIN mapel ON nilai_rapor.mapel_id = mapel.id WHERE siswa_id = $id"), MYSQL_ASSOC);
 ?>
 <body>
     <div class="container-lg">
@@ -50,7 +50,7 @@ $sqlnilai = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (siswa.nam
 </html>
 <?php endif; 
 if ($role == "guru"):
-$sqlsiswa = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM siswa"));
+$sqlsiswa = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM siswa"), MYSQL_ASSOC);
 ?>
     <body>
         <div class="container my-4">

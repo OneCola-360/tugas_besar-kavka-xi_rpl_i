@@ -7,7 +7,7 @@ $user_id = intval($o['id']) + 1;
 $role = $_POST["role"] ?? "";
 if ($role == "") return;
 $username = $_POST["username"] ?? "";
-$password = $_POST["password"] ?? "";
+$password = password_hash($_POST["password"]) ?? "";
 
 if ($username !== "" || $role !== "" || $password !== "") {
     mysqli_query($konek, "INSERT INTO users (id, username, password, role) VALUES (" . $user_id . ",'" . $username . "','" . $password . "','" . $role . "')");
