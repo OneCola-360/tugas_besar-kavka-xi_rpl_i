@@ -43,7 +43,7 @@ $sqlrapor = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (mapel.id)
                                 <?php endforeach; ?>
                             <?php else: ?>
                                 <tr>
-                                    <td colspan="5">Data Belum Di Isi</td>
+                                    <td colspan="9">Data Belum Di Isi</td>
                                 </tr>
                             <?php endif; ?>
                         </tbody>

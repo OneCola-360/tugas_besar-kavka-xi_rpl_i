@@ -29,7 +29,7 @@ $role = $r['role'];
                             <a type="button" class="btn btn-outline-warning" href="../create_new/guru_input.php">Buat Akun Guru</a>
                             <a type="button" class="btn btn-outline-warning" href="../create_new/admin_input.php">Buat Akun Admin</a>
                             <a type="button" class="btn btn-outline-success" href="../create_new/mapel_input.php">Buat Data Mapel</a>
-                            <a type="button" class="btn btn-outline-success" href="../create_new/mengajar_input.php">Buat Data Mengajar</a>
+                            <a type="button" class="btn btn-outline-primary" href="../create_new/mengajar.php">Buat Data Mengajar</a>
                         </div>
                     </li>
                 </ul>

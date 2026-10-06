@@ -1,6 +1,5 @@
 <?php 
 include("../header.php");
-session_start();
 $id = $_SESSION['akun_id'];
 ?>
 <!DOCTYPE html>
@@ -16,7 +15,7 @@ $id = $_SESSION['akun_id'];
                     <hr>
                 </div>
                 <div class="card-body">
-                    <form action="../aksi/akun/akun_pass.php">
+                    <form action="../aksi/akun/akun_pass.php" method="post">
                         <div class="mb-3">
                             <label class="form-label">Password Baru:</label>
                             <input type="password" class="form-control" name="newpass" placeholder="Masukan Password Baru" required>

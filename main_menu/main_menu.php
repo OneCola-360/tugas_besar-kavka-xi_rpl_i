@@ -1,6 +1,6 @@
 <?php 
 require("../konek.php");
-include("header.php");
+include("../header.php");
 if (session_status() == 0) session_start();
 $id = $_SESSION['akun_id'];
 $sqlrole = mysqli_fetch_all(mysqli_query($konek, "SELECT role FROM users WHERE id = $id"), MYSQLI_ASSOC);
@@ -100,16 +100,14 @@ if ($role == "admin"):
                             <hr>
                         </div>
                         <div class="card-body">
-                            <h5>Tabel User</h5>
-                            <div class="mb-3">
+                            <h5>Tabel</h5>
+                            <div class="mb-1">
                                 <div class="btn-group" role="group" aria-label="Basic example">
                                     <a href="../tabel/users.php" class="btn btn-outline-primary">Tabel User</a>
-                                </div>
-                            </div>
-                            <h5>Tabel Mapel</h5>
-                            <div class="mb3">
-                                <div class="btn-group" role="group" aria-label="Basic example">
                                     <a href="../tabel/mapel.php" class="btn btn-outline-primary">Tabel Mapel</a>
+                                    <a href="../tabel/siswa.php" class="btn btn-outline-primary">Tabel Siswa</a>
+                                    <a href="../tabel/guru.php" class="btn btn-outline-primary">Tabel Guru</a>
+                                    <a href="../tabel/mengajar.php" class="btn btn-outline-primary">Tabel Mengajar</a>
                                 </div>
                             </div>
                         </div>
@@ -123,7 +121,7 @@ if ($role == "admin"):
                         </div>
                         <div class="card-body">
                             <h5>Buat Akun</h5>
-                            <div class="mb-3">
+                            <div class="mb-1">
                                 <div class="btn-group" role="group" aria-label="Basic example">
                                     <a href="../create_new/siswa_input.php" class="btn btn-outline-warning">Buat Akun Siswa</a>
                                     <a href="../create_new/guru_input.php" class="btn btn-outline-warning">Buat Akun Guru</a>
@@ -131,9 +129,15 @@ if ($role == "admin"):
                                 </div>
                             </div>
                             <h5>Buat Data Mapel</h5>
-                            <div class="mb-3">
+                            <div class="mb-1">
                                 <div class="btn-group" role="group" aria-label="Basic example">
                                     <a href="../create_new/mapel_input.php" class="btn btn-outline-success">Buat Mapel</a>
+                                </div>
+                            </div>
+                            <h5>Buat Data Mengajar</h5>
+                            <div class="mb-1">
+                                <div class="btn-group" role="group" aria-label="Basic example">
+                                    <a href="../create_new/mengajar.php" class="btn btn-outline-primary">Tabel Mapel</a>
                                 </div>
                             </div>
                         </div>

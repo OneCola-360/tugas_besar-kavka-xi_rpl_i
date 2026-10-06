@@ -8,7 +8,7 @@ $username = $_POST['username'];
 $password = $_POST['password'];
 $org_pass = $_POST['org_pass'];
 
-if ($password == $org_pass):
+if (password_verify($password, $org_pass)):
     mysqli_query($konek, "UPDATE users SET role = '$role', username = '$username'  WHERE users.id = $id");
     if ($role == "guru") {
         mysqli_query($konek, "UPDATE guru SET nip = '$role', nama = '" . $_POST['nama'] . "', jenis_kelamin = '" . $_POST['jk'] . "'  WHERE guru.user_id = $id");

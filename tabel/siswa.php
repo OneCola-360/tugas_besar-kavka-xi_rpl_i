@@ -31,17 +31,17 @@ ORDER BY siswa.id asc"), MYSQLI_ASSOC);
                                         <td><?= $i['nis']; ?></td>
                                         <td><?= $i['nama']; ?></td>
                                         <td><?= $i['kelas']; ?></td>
-                                        <td><?= $i['jk']; ?></td>
+                                        <td><?= $i['jenis_kelamin']; ?></td>
                                         <td><?= $i['user_id']; ?></td>
                                         <td>
-                                            <a href="../form_manip/form_edit.php?id=<?= $i['id']; ?>&&role=<?= $i['role']; ?>&&username=<?= $i['username']; ?>&&password=<?= $i['password']; ?>&&nis=<?= $i['nis']; ?>&&nama=<?= $i['nama']; ?>&&kelas=<?= $i['kelas']; ?>&&jk=<?= $i['jk']; ?>" class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="../form_manip/form_edit.php?id=<?= $i['id']; ?>&&role=<?= $i['role']; ?>&&username=<?= $i['username']; ?>&&password=<?= $i['password']; ?>&&nis=<?= $i['nis']; ?>&&nama=<?= $i['nama']; ?>&&kelas=<?= $i['kelas']; ?>&&jk=<?= $i['jenis_kelamin']; ?>" class="btn btn-warning btn-sm">Edit</a>
                                             <a href="../aksi/akun/aksi_hapus.php?id=<?= $i['id']; ?>&&role=<?= $i['role']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm">Hapus</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
                             <?php else: ?>
                                 <tr>
-                                    <td colspan="5">Data Belum Di Isi</td>
+                                    <td colspan="8">Data Belum Di Isi</td>
                                 </tr>
                             <?php endif; ?>
                         </tbody>

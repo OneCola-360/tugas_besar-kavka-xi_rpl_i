@@ -13,7 +13,7 @@ ORDER BY guru.id asc"), MYSQLI_ASSOC);
                         <thead>
                             <tr>
                                 <th scope="col" style="width: 10%;">No</th>
-                                <th scope="col">ID Siswa</th>
+                                <th scope="col">ID Guru</th>
                                 <th scope="col">NIP</th>
                                 <th scope="col">Nama</th>
                                 <th scope="col">Jenis Kelamin</th>
@@ -39,7 +39,7 @@ ORDER BY guru.id asc"), MYSQLI_ASSOC);
                                 <?php endforeach; ?>
                             <?php else: ?>
                                 <tr>
-                                    <td colspan="5">Data Belum Di Isi</td>
+                                    <td colspan="7">Data Belum Di Isi</td>
                                 </tr>
                             <?php endif; ?>
                         </tbody>

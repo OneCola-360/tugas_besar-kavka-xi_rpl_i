@@ -17,7 +17,7 @@ $o = 1;
         <div class="container my-4">
             <div class="row justify-content-center">
                 <div class="col-md-10">
-                    <h2>Tabel Users</h2>
+                    <h2>Tabel Mapel</h2>
                     <table id="tabelUser" class="table table-striped table-hover border">
                         <thead>
                             <tr>
