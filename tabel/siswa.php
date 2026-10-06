@@ -1,7 +1,8 @@
 <?php
 require("../konek.php");
+include("../header.php");
 $sql = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (siswa.id) AS id_siswa FROM siswa LEFT JOIN users ON users.id = siswa.user_id
-ORDER BY siswa.id asc"), MYSQL_ASSOC);
+ORDER BY siswa.id asc"), MYSQLI_ASSOC);
 ?>
 <body>
         <div class="container my-4">

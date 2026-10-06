@@ -11,13 +11,13 @@ foreach ($sqlusers as $i) {
     }
 }
 session_start();
-$akun_id = $_SESSION['akun_id'] = $id;
+$_SESSION['akun_id'] = $id;
 
 if ($is_there == false) {
     echo"<script>alert('Ada yang salah, Mohon di cek kembali'); window.location.href='../../login.php'</script>";
 }
 if ($is_there == true) {
-    echo"<script>alert('Login Berhasil'); window.location.href='../../main_menu.php'</script>";
+    echo"<script>alert('Login Berhasil'); window.location.href='../../main_menu/main_menu.php'</script>";
 }
 
 ?>

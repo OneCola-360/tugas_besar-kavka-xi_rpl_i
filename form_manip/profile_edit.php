@@ -1,4 +1,5 @@
 <?php 
+include("../header.php");
 session_start();
 $username = $_GET['username'];
 $id = $_SESSION['akun_id'];

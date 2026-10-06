@@ -1,5 +1,6 @@
 <?php
 require("../konek.php");
+include("../header.php");
 $sqlsiswa = mysqli_fetch_all(mysqli_query($konek, "SELECT id, nama FROM siswa"));
 $sqlmapel = mysqli_fetch_all(mysqli_query($konek, "SELECT id, nama FROM mapel"));
 ?>

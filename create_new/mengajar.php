@@ -1,8 +1,9 @@
 <?php
 require("../konek.php");
-$siswas = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM siswa"), MYSQL_ASSOC);
-$mapels = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM mapel"), MYSQL_ASSOC);
-$gurus = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM guru"), MYSQL_ASSOC);
+include("../header.php");
+$siswas = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM siswa"), MYSQLI_ASSOC);
+$mapels = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM mapel"), MYSQLI_ASSOC);
+$gurus = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM guru"), MYSQLI_ASSOC);
 ?>
 <body class="bg-light">
 <div class="container mt-5" style="width=50%">

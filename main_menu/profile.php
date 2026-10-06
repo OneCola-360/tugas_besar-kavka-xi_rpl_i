@@ -1,7 +1,9 @@
 <?php
+require("konek.php");
+include("../header.php");
 session_start();
 $akun_id = $_SESSION['akun_id'];
-$user = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM users WHERE id = $id"), MYSQLI_ASSOC);
+$user = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM users WHERE id = $akun_id"), MYSQLI_ASSOC);
 foreach ($user as $i);
 ?>
 <!DOCTYPE html>
@@ -26,8 +28,11 @@ foreach ($user as $i);
                     <div class="mb-3">
                         <h5>Created At: <?= $i['created_at'] ?></h5>
                     </div>
+                    <div class="mb-1">
+                        <a class="btn btn-primary" href="../form_manip/profile_edit.php?id=<?= $i['id'] ?>&&username=<?= $i['username'] ?>&&password=<?= $i['password'] ?>">Edit</a>
+                    </div>
                     <div class="mb-3">
-                        <a href="form_manip/profile_edit.php?id=<?= $i['id'] ?>&&username=<?= $i['username'] ?>&&password=<?= $i['password'] ?>">Edit</a>
+                        <a class="btn btn-danger" href="../aksi/akun/logout.php" onclick="return confirm('Anda Yakin Ingin Logout?')">Log Out</a>
                     </div>
                 </div>
             </div>

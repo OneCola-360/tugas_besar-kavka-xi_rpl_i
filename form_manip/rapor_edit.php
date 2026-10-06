@@ -1,4 +1,5 @@
 <?php 
+include("../header.php");
 $id = $_GET['id'];
 $kkm = $_GET['kkm'];
 $mapel = $_GET['mapel'];

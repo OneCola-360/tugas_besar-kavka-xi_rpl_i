@@ -15,8 +15,8 @@ if ($mapel_id >= 10) {
 $kode = join($mapelkode);
 
 if (mysqli_query($konek, "INSERT INTO mapel (id, kode_mapel, nama, guru_id) VALUES (" . $mapel_id . ",'" . $kode . "','" . $nama . "','" . $guru . "')")):
-echo "alert('Data Berhasil Ditambahkan'); window.location.href='../../main_menu.php'";
+echo "alert('Data Berhasil Ditambahkan'); window.location.href='../../main_menu/main_menu.php'";
 else:
-echo "alert('Data Gagal Ditambahkan'); window.location.href='../../main_menu.php'";
+echo "alert('Data Gagal Ditambahkan'); window.location.href='../../main_menu/main_menu.php'";
 endif;
 ?>

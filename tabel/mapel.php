@@ -1,5 +1,6 @@
 <?php
-include("../konek.php");
+require("../konek.php");
+include("../header.php");
 
 $sql = "SELECT mapel.id, kode_mapel, mapel.nama, guru_id, guru.nama AS nama_guru
 FROM mapel

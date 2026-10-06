@@ -1,6 +1,6 @@
 <?php
-include("../konek.php");
-
+require("../konek.php");
+include("../header.php");
 $sql = "SELECT users.id, username, role, password, created_at, nis, kelas, nip, guru.user_id, siswa.user_id,
 COALESCE (siswa.nama, guru.nama) AS nama, COALESCE (guru.jenis_kelamin, siswa.jenis_kelamin) AS jk
 FROM users

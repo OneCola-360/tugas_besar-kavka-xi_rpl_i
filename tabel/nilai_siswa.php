@@ -1,7 +1,8 @@
 <?php 
 require("../konek.php");
+include("../header.php");
 $id = $_GET['siswa_id'];
-$sqlrapor = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (mapel.id) AS id_mapel, COALESCE (siswa.id) AS id_siswa COALESCE (siswa.nama) AS nama, COALESCE (mapel.nama) AS nama_mapel FROM nilai_rapor LEFT JOIN siswa ON nilai_rapor.siswa_id = siswa.id LEFT JOIN mapel ON nilai_rapor.mapel_id = mapel.id WHERE siswa_id = $id"), MYSQL_ASSOC);
+$sqlrapor = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (mapel.id) AS id_mapel, COALESCE (siswa.id) AS id_siswa COALESCE (siswa.nama) AS nama, COALESCE (mapel.nama) AS nama_mapel FROM nilai_rapor LEFT JOIN siswa ON nilai_rapor.siswa_id = siswa.id LEFT JOIN mapel ON nilai_rapor.mapel_id = mapel.id WHERE siswa_id = $id"), MYSQLI_ASSOC);
 ?>
     <body>
         <div class="container my-4">
@@ -35,7 +36,7 @@ $sqlrapor = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (mapel.id)
                                         <td><?= $i['nilai_keterampilan']; ?></td>
                                         <td><?= $i['keterangan']; ?></td>
                                         <td>
-                                            <a href="../form_manip/rapor/edit.php?id=<?= $i['id'] ?>&&mapel<?= $i['nama_mapel'] ?>&&siswa=<?= $i['nama'] ?>&&kkm=<?= $i['nilai_kkm'] ?>&&pengetahuan=<?= $i['nilai_pengetahuan'] ?>&&keterampilan=<?= $i['nilai_keterampilan'] ?>&&keterangan=<?= $i['keterangan']?>" class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="../form_manip/rapor_edit.php?id=<?= $i['id'] ?>&&mapel<?= $i['nama_mapel'] ?>&&siswa=<?= $i['nama'] ?>&&kkm=<?= $i['nilai_kkm'] ?>&&pengetahuan=<?= $i['nilai_pengetahuan'] ?>&&keterampilan=<?= $i['nilai_keterampilan'] ?>&&keterangan=<?= $i['keterangan']?>" class="btn btn-warning btn-sm">Edit</a>
                                             <a href="../aksi/rapor/hapus.php?id=<?= $i['id'] ?>" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm">Hapus</a>
                                         </td>
                                     </tr>

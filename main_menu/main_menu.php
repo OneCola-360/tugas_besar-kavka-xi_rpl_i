@@ -1,18 +1,13 @@
 <?php 
-require("konek.php");
-session_start();
+require("../konek.php");
+include("header.php");
+if (session_status() == 0) session_start();
 $id = $_SESSION['akun_id'];
-$sqlrole = mysqli_fetch_all(mysqli_query($konek, "SELECT role FROM users WHERE id = $id"), MYSQL_ASSOC);
-foreach ($sqlrole as $role);
-?>
-<!DOCTYPE html>
-<html>
-    <head>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-    </head>
-<?php
+$sqlrole = mysqli_fetch_all(mysqli_query($konek, "SELECT role FROM users WHERE id = $id"), MYSQLI_ASSOC);
+foreach ($sqlrole as $r) {};
+$role = $r['role'];
 if ($role == "siswa"):
-$sqlnilai = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (siswa.nama) AS nama, COALESCE (mapel.nama) AS nama_mapel FROM nilai_rapor LEFT JOIN siswa ON nilai_rapor.siswa_id = siswa.id LEFT JOIN mapel ON nilai_rapor.mapel_id = mapel.id WHERE siswa_id = $id"), MYSQL_ASSOC);
+$sqlnilai = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (siswa.nama) AS nama, COALESCE (mapel.nama) AS nama_mapel FROM nilai_rapor LEFT JOIN siswa ON nilai_rapor.siswa_id = siswa.id LEFT JOIN mapel ON nilai_rapor.mapel_id = mapel.id WHERE siswa_id = $id"), MYSQLI_ASSOC);
 ?>
 <body>
     <div class="container-lg">
@@ -50,7 +45,7 @@ $sqlnilai = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (siswa.nam
 </html>
 <?php endif; 
 if ($role == "guru"):
-$sqlsiswa = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM siswa"), MYSQL_ASSOC);
+$sqlsiswa = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM siswa"), MYSQLI_ASSOC);
 ?>
     <body>
         <div class="container my-4">
@@ -74,7 +69,7 @@ $sqlsiswa = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM siswa"), MYSQL_
                                         <td><?= $i['nama']; ?></td>
                                         <td><?= $i['kelas']; ?></td>
                                         <td>
-                                            <a href="tabel/nilai_siswa.php?siswa_id=<?= $i['id'] ?>" class="btn btn-warning btn-sm">Lihat Nilai Rapor Siswa</a>
+                                            <a href="../tabel/nilai_siswa.php?siswa_id=<?= $i['id'] ?>" class="btn btn-warning btn-sm">Lihat Nilai Rapor Siswa</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
@@ -108,13 +103,13 @@ if ($role == "admin"):
                             <h5>Tabel User</h5>
                             <div class="mb-3">
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a href="tabel/users.php" class="btn btn-outline-primary">Tabel User</a>
+                                    <a href="../tabel/users.php" class="btn btn-outline-primary">Tabel User</a>
                                 </div>
                             </div>
                             <h5>Tabel Mapel</h5>
                             <div class="mb3">
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a href="tabel/mapel.php" class="btn btn-outline-primary">Tabel Mapel</a>
+                                    <a href="../tabel/mapel.php" class="btn btn-outline-primary">Tabel Mapel</a>
                                 </div>
                             </div>
                         </div>
@@ -130,15 +125,15 @@ if ($role == "admin"):
                             <h5>Buat Akun</h5>
                             <div class="mb-3">
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a href="create_new/siswa_input.php" class="btn btn-outline-warning">Buat Akun Siswa</a>
-                                    <a href="create_new/guru_input.php" class="btn btn-outline-warning">Buat Akun Guru</a>
-                                    <a href="create_new/admin_input.php" class="btn btn-outline-warning">Buat Akun Admin</a>
+                                    <a href="../create_new/siswa_input.php" class="btn btn-outline-warning">Buat Akun Siswa</a>
+                                    <a href="../create_new/guru_input.php" class="btn btn-outline-warning">Buat Akun Guru</a>
+                                    <a href="../create_new/admin_input.php" class="btn btn-outline-warning">Buat Akun Admin</a>
                                 </div>
                             </div>
                             <h5>Buat Data Mapel</h5>
                             <div class="mb-3">
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a href="create_new/mapel_input.php" class="btn btn-outline-success">Buat Mapel</a>
+                                    <a href="../create_new/mapel_input.php" class="btn btn-outline-success">Buat Mapel</a>
                                 </div>
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 <?php 
 require("../konek.php");
-include("header.php");
+include("../header.php");
 
 $sqlguru = "SELECT nama, id FROM guru";
 $gurus = mysqli_query($konek, $sqlguru);
