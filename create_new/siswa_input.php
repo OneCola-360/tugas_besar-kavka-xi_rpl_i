@@ -13,7 +13,7 @@ include("../header.php");
             <form action="../aksi/akun/aksi_akun.php" method="post">
                 <div class="mb-3">
                     <label class="form-label">Nomor Induk Siswa</label>
-                    <input type="number" class="form-control" name="nis" placeholder="Contoh: 12345678" required>
+                    <input type="number" class="form-control" name="nis" placeholder="Contoh: 12345678" size="11" required>
                 </div>
                 <div class="mb-3">
                     <label class="form-label">Nama Lengkap Siswa</label>

@@ -3,6 +3,7 @@ require("../konek.php");
 include("../header.php");
 $sql = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (siswa.id) AS id_siswa FROM siswa LEFT JOIN users ON users.id = siswa.user_id
 ORDER BY siswa.id asc"), MYSQLI_ASSOC);
+$o = 1;
 ?>
 <body>
         <div class="container my-4">
@@ -13,7 +14,6 @@ ORDER BY siswa.id asc"), MYSQLI_ASSOC);
                         <thead>
                             <tr>
                                 <th scope="col" style="width: 10%;">No</th>
-                                <th scope="col">ID Siswa</th>
                                 <th scope="col">NIS</th>
                                 <th scope="col">Nama</th>
                                 <th scope="col">Kelas</th>
@@ -27,7 +27,6 @@ ORDER BY siswa.id asc"), MYSQLI_ASSOC);
                                 <?php foreach($sql as $i): ?>
                                     <tr>
                                         <td><?= $o++; ?></td>
-                                        <td><?= $i['id_siswa']; ?></td>
                                         <td><?= $i['nis']; ?></td>
                                         <td><?= $i['nama']; ?></td>
                                         <td><?= $i['kelas']; ?></td>
@@ -35,13 +34,13 @@ ORDER BY siswa.id asc"), MYSQLI_ASSOC);
                                         <td><?= $i['user_id']; ?></td>
                                         <td>
                                             <a href="../form_manip/form_edit.php?id=<?= $i['id']; ?>&&role=<?= $i['role']; ?>&&username=<?= $i['username']; ?>&&password=<?= $i['password']; ?>&&nis=<?= $i['nis']; ?>&&nama=<?= $i['nama']; ?>&&kelas=<?= $i['kelas']; ?>&&jk=<?= $i['jenis_kelamin']; ?>" class="btn btn-warning btn-sm">Edit</a>
-                                            <a href="../aksi/akun/aksi_hapus.php?id=<?= $i['id']; ?>&&role=<?= $i['role']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm">Hapus</a>
+                                            <a href="../aksi/akun/aksi_hapus.php?id=<?= $i['user_id']; ?>&&role=<?= $i['role']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm">Hapus</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
                             <?php else: ?>
                                 <tr>
-                                    <td colspan="8">Data Belum Di Isi</td>
+                                    <td colspan="7">Data Belum Di Isi</td>
                                 </tr>
                             <?php endif; ?>
                         </tbody>

@@ -20,13 +20,12 @@ WHERE users.id = $id"), MYSQLI_ASSOC) as $i);
     <body>
         <div class="container mt-5" width="50%">
             <div class="card">
-                <div class="card-head">
+                <div class="card-header">
                     <h3>Profile Edit</h3>
-                    <hr>
                 </div>
                 <div class="card-body">
-                    <form action="../aksi/akun/akun_edit.php">
-                        <?php if($role=="siswa"):?>
+                    <form action="../aksi/akun/akun_edit.php" method="post">
+                        <?php if($role == "siswa"): ?>
                             <div class="mb-3">
                                 <label class="form-label">NIS:</label>
                                 <input class="form-control" type="text" name="nis" id="nis" placeholder="<?= $i['nis'] ?>" value="<?= $i['nis'] ?>">
@@ -54,7 +53,7 @@ WHERE users.id = $id"), MYSQLI_ASSOC) as $i);
                                     </label>
                                 </div>
                             </div>
-                        <?php elseif($role=="guru"): ?>
+                        <?php elseif($role == "guru"): ?>
                             <div class="mb-3">
                                 <label class="form-label">NIP:</label>
                                 <input class="form-control" type="text" name="nip" id="nip" placeholder="<?= $i['nip'] ?>" value="<?= $i['nip'] ?>">

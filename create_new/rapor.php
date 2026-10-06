@@ -1,8 +1,12 @@
 <?php
 require("../konek.php");
 include("../header.php");
-$sqlsiswa = mysqli_fetch_all(mysqli_query($konek, "SELECT id, nama FROM siswa"));
-$sqlmapel = mysqli_fetch_all(mysqli_query($konek, "SELECT id, nama FROM mapel"));
+$akun_id = $_SESSION['akun_id'];
+$sqlmapel = mysqli_fetch_all(mysqli_query($konek, "SELECT mapel.id, mapel.nama, mapel.kode_mapel FROM mapel LEFT JOIN guru ON mapel.guru_id = guru.id WHERE guru.user_id = $akun_id"), MYSQLI_ASSOC);
+foreach ($sqlmapel as $mapel) {}
+$mapel_id = $mapel['id'];
+$mapel_kode = $mapel['kode_mapel'];
+$sqlsiswa = mysqli_fetch_all(mysqli_query($konek, "SELECT siswa.id, siswa.nama FROM siswa LEFT JOIN mengajar ON mengajar.siswa_id = siswa.id LEFT JOIN mapel ON mapel.id = mengajar.mapel_id WHERE mapel.kode_mapel = '$mapel_kode'"), MYSQLI_ASSOC);
 ?>
 <body>
 <div class="container mt-5" style="width=50%">
@@ -17,16 +21,6 @@ $sqlmapel = mysqli_fetch_all(mysqli_query($konek, "SELECT id, nama FROM mapel"))
                     <div class="dropdown">
                         <select name="siswa" id="siswa" class="btn btn-secondary">
                             <?php foreach($sqlsiswa as $i): ?>
-                                <li><option value="<?= $i['id']; ?>"><?= $i['nama']; ?></option></li>
-                            <?php endforeach ?>
-                        </select>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label class="form-label">Mapel</label>
-                    <div class="dropdown">
-                        <select name="siswa" id="siswa" class="btn btn-secondary">
-                            <?php foreach($sqlmapel as $i): ?>
                                 <li><option value="<?= $i['id']; ?>"><?= $i['nama']; ?></option></li>
                             <?php endforeach ?>
                         </select>
@@ -52,6 +46,7 @@ $sqlmapel = mysqli_fetch_all(mysqli_query($konek, "SELECT id, nama FROM mapel"))
                     <button type="submit" class="btn btn-primary">Simpan</button>
                     <button type="reset" class="btn btn-secondary">Hapus</button>
                 </div>
+                <input type="text" name="mapel" id="mapel" value="<?= $mapel_id ?>" style="display: none;" readonly>
             </form>
         </div>
     </div>

@@ -19,9 +19,8 @@ $role = $i['role'];
     <body>
         <div class="container mt-5" width="50%">
             <div class="card">
-                <div class="card-head">
+                <div class="card-header">
                     <h3>Profile <?= $i['username'] ?></h3>
-                    <hr>
                 </div>
                 <div class="card-body">
                     <div class="mb-3">

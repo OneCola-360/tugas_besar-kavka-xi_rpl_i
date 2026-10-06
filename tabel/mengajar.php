@@ -1,6 +1,7 @@
 <?php
 require("../konek.php");
 include("../header.php");
+$o = 1;
 $sql = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (siswa.id) AS id_siswa, COALESCE (mapel.id) AS id_mapel, COALESCE (guru.id) AS id_guru, COALESCE (mapel.nama) AS nama_mapel, COALESCE (siswa.nama) AS nama_siswa, COALESCE (guru.nama) AS nama_guru FROM mengajar LEFT JOIN siswa ON mengajar.siswa_id = siswa.id LEFT JOIN mapel ON mengajar.mapel_id = mapel.id LEFT JOIN guru ON mapel.guru_id = guru.id ORDER BY mengajar.id asc"), MYSQLI_ASSOC);
 ?>
 <body>
@@ -12,7 +13,6 @@ $sql = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (siswa.id) AS i
                         <thead>
                             <tr>
                                 <th scope="col" style="width: 10%;">No</th>
-                                <th scope="col">ID Mengajar</th>
                                 <th scope="col">Siswa</th>
                                 <th scope="col">Mata Pelajaran</th>
                                 <th scope="col">Guru</th>
@@ -24,7 +24,6 @@ $sql = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (siswa.id) AS i
                                 <?php foreach($sql as $i): ?>
                                     <tr>
                                         <td><?= $o++; ?></td>
-                                        <td><?= $i['id']; ?></td>
                                         <td><?= $i['nama_siswa']; ?></td>
                                         <td><?= $i['nama_mapel']; ?></td>
                                         <td><?= $i['nama_guru']; ?></td>
@@ -36,7 +35,7 @@ $sql = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (siswa.id) AS i
                                 <?php endforeach; ?>
                             <?php else: ?>
                                 <tr>
-                                    <td colspan="6">Data Belum Di Isi</td>
+                                    <td colspan="5">Data Belum Di Isi</td>
                                 </tr>
                             <?php endif; ?>
                         </tbody>

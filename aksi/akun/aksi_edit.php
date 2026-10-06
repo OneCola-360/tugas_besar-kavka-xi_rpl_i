@@ -1,12 +1,10 @@
 <?php 
 require("../../konek.php");
-include("header.php");
-
-$id = $_POST['id'];
-$role = $_POST['role'];
-$username = $_POST['username'];
 $password = $_POST['password'];
 $org_pass = $_POST['org_pass'];
+$id = $_POST['id'];
+$username = $_POST['username'];
+$role = $_POST['role'];
 
 if (password_verify($password, $org_pass)):
     mysqli_query($konek, "UPDATE users SET role = '$role', username = '$username'  WHERE users.id = $id");
@@ -16,7 +14,8 @@ if (password_verify($password, $org_pass)):
     if ($role == "siswa") {
         mysqli_query($konek, "UPDATE siswa SET nis = '$role', nama = '" . $_POST['nama'] . "', kelas = '" . $_POST['kelas'] . "',jenis_kelamin = '" . $_POST['jk'] . "'  WHERE siswa.user_id = $id");
     }
-    echo "<script>alert('Data Berhasil Ditambahkan'); window.location.href='../../tabel/users.php'</script>";
+    echo "<script>alert('Data Berhasil Diubah'); window.location.href='../../tabel/users.php'</script>";
 else:
 echo "<script>alert('Data Gagal Ditambahkan'); window.location.href='../../tabel/users.php'</script>";
 endif; ?>
+?>

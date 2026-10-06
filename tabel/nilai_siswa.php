@@ -2,7 +2,8 @@
 require("../konek.php");
 include("../header.php");
 $id = $_GET['siswa_id'];
-$sqlrapor = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (mapel.id) AS id_mapel, COALESCE (siswa.id) AS id_siswa COALESCE (siswa.nama) AS nama, COALESCE (mapel.nama) AS nama_mapel FROM nilai_rapor LEFT JOIN siswa ON nilai_rapor.siswa_id = siswa.id LEFT JOIN mapel ON nilai_rapor.mapel_id = mapel.id WHERE siswa_id = $id"), MYSQLI_ASSOC);
+$o = 1;
+$sqlrapor = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (mapel.id, siswa.id) AS nid, COALESCE (siswa.nama) AS nama, COALESCE (mapel.nama) AS nama_mapel FROM nilai_rapor LEFT JOIN siswa ON nilai_rapor.siswa_id = siswa.id LEFT JOIN mapel ON nilai_rapor.mapel_id = mapel.id WHERE nilai_rapor.siswa_id = $id"), MYSQLI_ASSOC);
 ?>
     <body>
         <div class="container my-4">

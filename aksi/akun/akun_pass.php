@@ -4,7 +4,7 @@ $newpass = $_POST['newpass'];
 $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 $id = $_POST['id'];
 
-if ($newpass == $password) {
+if (password_verify($newpass, $password)) {
     mysqli_query($konek, "UPDATE users SET password = '$password' WHERE id=$id");
     echo "<script>alert('Password berhasil diubah'); window.location.href='../../main_menu/profile.php'</script>";
 } else {

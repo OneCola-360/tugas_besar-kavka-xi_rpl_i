@@ -3,17 +3,19 @@ require("../konek.php");
 include("../header.php");
 if (session_status() == 0) session_start();
 $id = $_SESSION['akun_id'];
+$o = 1;
 $sqlrole = mysqli_fetch_all(mysqli_query($konek, "SELECT role FROM users WHERE id = $id"), MYSQLI_ASSOC);
 foreach ($sqlrole as $r) {};
 $role = $r['role'];
 if ($role == "siswa"):
-$sqlnilai = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (siswa.nama) AS nama, COALESCE (mapel.nama) AS nama_mapel FROM nilai_rapor LEFT JOIN siswa ON nilai_rapor.siswa_id = siswa.id LEFT JOIN mapel ON nilai_rapor.mapel_id = mapel.id WHERE siswa_id = $id"), MYSQLI_ASSOC);
+$sqlnilai = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (siswa.nama) AS nama, COALESCE (mapel.nama) AS nama_mapel FROM nilai_rapor LEFT JOIN siswa ON nilai_rapor.siswa_id = siswa.id LEFT JOIN mapel ON nilai_rapor.mapel_id = mapel.id LEFT JOIN users ON siswa.user_id = users.id WHERE siswa.user_id = $id"), MYSQLI_ASSOC);
 ?>
 <body>
     <div class="container-lg">
+        <?php if ($sqlnilai > 0): ?>
         <?php foreach($sqlnilai as $i): ?>
             <div class="card">
-                <div class="card-head">
+                <div class="card-header">
                     <h3>Nilai Pelajaran <?= $i['nama_mapel'] ?></h3>
                 </div>
                 <div class="card-body">
@@ -40,6 +42,13 @@ $sqlnilai = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (siswa.nam
                 </div>
             </div>
         <?php endforeach; ?>
+        <?php else: ?>
+            <div class="card">
+                <div class="card-head">
+                    <h3>Data Belum Di Isi</h3>
+                </div>
+            </div>
+        <?php endif; ?>
     </div>
 </body>
 </html>

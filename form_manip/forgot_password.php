@@ -10,7 +10,7 @@ $id = $_SESSION['akun_id'];
     <body>
         <div class="container mt-5" width="50%">
             <div class="card">
-                <div class="card-head">
+                <div class="card-header">
                     <h3>Profile Edit</h3>
                     <hr>
                 </div>

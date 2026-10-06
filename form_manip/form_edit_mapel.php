@@ -1,6 +1,6 @@
 <?php 
 require("../konek.php");
-include("header.php");
+include("../header.php");
 
 $kode = $_GET['kode'];
 $nama = $_GET['nama'];

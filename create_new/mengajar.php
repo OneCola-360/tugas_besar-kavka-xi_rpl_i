@@ -1,24 +1,23 @@
 <?php
 require("../konek.php");
 include("../header.php");
-$siswas = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM siswa"), MYSQLI_ASSOC);
-$mapels = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM mapel"), MYSQLI_ASSOC);
-$gurus = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM guru"), MYSQLI_ASSOC);
+$siswa = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM siswa"), MYSQLI_ASSOC);
+$mapel = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM mapel"), MYSQLI_ASSOC);
 ?>
 <body class="bg-light">
 <div class="container mt-5" style="width=50%">
     <div class="card shadow">
         <div class="card-header">
-            <h3>Form Tambah Mapel</h3>
+            <h3>Form Tambah Mengajar</h3>
         </div>
         <div class="card-body">
-            <form action="../aksi/mengajar/edit.php" method="post">
+            <form action="../aksi/mengajar/tambah.php" method="post">
                 <h5>Pilih Pelajar:</h5>
                 <div class="mb-3">
                     <div class="dropdown">
                         <select name="siswa" id="siswa" class="btn btn-secondary">
-                            <?php foreach($siswas as $i): ?>
-                                <li><option value="<?= $i['siswa']; ?>"><?= $i['nama']; ?></option></li>
+                            <?php foreach($siswa as $i): ?>
+                                <li><option value="<?= $i['id']; ?>"><?= $i['nama']; ?></option></li>
                             <?php endforeach ?>
                         </select>
                     </div>
@@ -27,8 +26,8 @@ $gurus = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM guru"), MYSQLI_ASS
                 <div class="mb-3">
                     <div class="dropdown">
                         <select name="mapel" id="mapel" class="btn btn-secondary">
-                            <?php foreach($gurus as $i): ?>
-                                <li><option value="<?= $i['mapel']; ?>"><?= $i['nama']; ?></option></li>
+                            <?php foreach($mapel as $i): ?>
+                                <li><option value="<?= $i['id'] ?>"><?= $i['nama']; ?></option></li>
                             <?php endforeach ?>
                         </select>
                     </div>
