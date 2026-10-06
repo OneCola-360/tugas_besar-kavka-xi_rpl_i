@@ -22,7 +22,7 @@ $gurus = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM guru"), MYSQLI_ASS
                     <div class="dropdown">
                         <select name="siswa" id="siswa" class="btn btn-secondary">
                             <?php foreach($siswas as $i): ?>
-                                <li><option value="<?= $i['siswa']; ?>"><?= $i['nama']; ?></option></li>
+                                <li><option value="<?= $i['id']; ?>"><?= $i['nama']; ?></option></li>
                             <?php endforeach ?>
                         </select>
                     </div>
@@ -31,8 +31,8 @@ $gurus = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM guru"), MYSQLI_ASS
                 <div class="mb-3">
                     <div class="dropdown">
                         <select name="mapel" id="mapel" class="btn btn-secondary">
-                            <?php foreach($gurus as $i): ?>
-                                <li><option value="<?= $i['mapel']; ?>"><?= $i['nama']; ?></option></li>
+                            <?php foreach($mapels as $i): ?>
+                                <li><option value="<?= $i['id']; ?>"><?= $i['nama']; ?></option></li>
                             <?php endforeach ?>
                         </select>
                     </div>
@@ -42,7 +42,7 @@ $gurus = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM guru"), MYSQLI_ASS
                     <div class="dropdown">
                         <select name="guru" id="guru" class="btn btn-secondary">
                             <?php foreach($gurus as $i): ?>
-                                <li><option value="<?= $i['id_guru']; ?>"><?= $i['nama']; ?></option></li>
+                                <li><option value="<?= $i['id']; ?>"><?= $i['nama']; ?></option></li>
                             <?php endforeach ?>
                         </select>
                     </div>
