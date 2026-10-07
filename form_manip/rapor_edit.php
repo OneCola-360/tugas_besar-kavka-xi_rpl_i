@@ -15,7 +15,7 @@ $keterangan = $_GET['keterangan'];
             <h3>Form Edit Data Rapor <?= $siswa ?></h3>
         </div>
         <div class="card-body">
-            <form action="../../aksi/rapor/aksi_edit.php" method="post">
+            <form action="../aksi/rapor/edit.php" method="post">
                 <h4>Mapel <?= $mapel ?></h4>
                 <div class="mb-3">
                     <label class="form-label">Nilai KKM</label>

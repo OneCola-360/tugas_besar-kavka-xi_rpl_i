@@ -10,11 +10,11 @@ $role = $r['role'];
 if ($role == "siswa"):
 $sqlnilai = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (siswa.nama) AS nama, COALESCE (mapel.nama) AS nama_mapel FROM nilai_rapor LEFT JOIN siswa ON nilai_rapor.siswa_id = siswa.id LEFT JOIN mapel ON nilai_rapor.mapel_id = mapel.id LEFT JOIN users ON siswa.user_id = users.id WHERE siswa.user_id = $id"), MYSQLI_ASSOC);
 ?>
-<body>
+<body style="background-image: url(../bgcardboard.jpe);">
     <div class="container-lg">
         <?php if ($sqlnilai > 0): ?>
         <?php foreach($sqlnilai as $i): ?>
-            <div class="card">
+            <div class="card" style="background-image: url(../bgblueprint.jpe); color: white;">
                 <div class="card-header">
                     <h3>Nilai Pelajaran <?= $i['nama_mapel'] ?></h3>
                 </div>
@@ -56,8 +56,8 @@ $sqlnilai = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (siswa.nam
 if ($role == "guru"):
 $sqlsiswa = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM siswa"), MYSQLI_ASSOC);
 ?>
-    <body>
-        <div class="container my-4">
+    <body style="background-image: radial-gradient(circle, white, cyan, blue);">
+        <div class="container my-4" >
             <div class="row justify-content-center">
                 <div class="col-md-10">
                     <h2>Tabel Siswa/Siswi</h2>
@@ -65,7 +65,7 @@ $sqlsiswa = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM siswa"), MYSQLI
                         <thead>
                             <tr>
                                 <th scope="col" style="width: 10%;">No</th>
-                                <th scope="col">User</th>
+                                <th scope="col">Nama</th>
                                 <th scope="col">Kelas</th>
                                 <th scope="col">Aksi</th>
                             </tr>
@@ -97,7 +97,7 @@ $sqlsiswa = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM siswa"), MYSQLI
 <?php endif;
 if ($role == "admin"):
 ?>
-<body>
+<body style="background-image: linear-gradient(to top, cyan, white);">
     <div class="container-lg">
         <div class="container px-4 text-center">
             <h1>Main Menu</h1>
