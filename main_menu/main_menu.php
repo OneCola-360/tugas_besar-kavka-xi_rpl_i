@@ -10,11 +10,11 @@ $role = $r['role'];
 if ($role == "siswa"):
 $sqlnilai = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (siswa.nama) AS nama, COALESCE (mapel.nama) AS nama_mapel FROM nilai_rapor LEFT JOIN siswa ON nilai_rapor.siswa_id = siswa.id LEFT JOIN mapel ON nilai_rapor.mapel_id = mapel.id LEFT JOIN users ON siswa.user_id = users.id WHERE siswa.user_id = $id"), MYSQLI_ASSOC);
 ?>
-<body style="background-image: url(../bgcardboard.jpe);">
+<body>
     <div class="container-lg">
         <?php if ($sqlnilai > 0): ?>
         <?php foreach($sqlnilai as $i): ?>
-            <div class="card" style="background-image: url(../bgblueprint.jpe); color: white;">
+            <div class="card">
                 <div class="card-header">
                     <h3>Nilai Pelajaran <?= $i['nama_mapel'] ?></h3>
                 </div>
@@ -56,10 +56,10 @@ $sqlnilai = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (siswa.nam
 if ($role == "guru"):
 $sqlsiswa = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM siswa"), MYSQLI_ASSOC);
 ?>
-    <body style="background-image: radial-gradient(circle, white, cyan, blue);">
+    <body>
         <div class="container my-4" >
             <div class="row justify-content-center">
-                <div class="col-md-10">
+                <div class="col-md:10">
                     <h2>Tabel Siswa/Siswi</h2>
                     <table id="tabelUser" class="table table-striped table-hover border">
                         <thead>
@@ -97,7 +97,7 @@ $sqlsiswa = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM siswa"), MYSQLI
 <?php endif;
 if ($role == "admin"):
 ?>
-<body style="background-image: linear-gradient(to top, cyan, white);">
+<body>
     <div class="container-lg">
         <div class="container px-4 text-center">
             <h1>Main Menu</h1>
