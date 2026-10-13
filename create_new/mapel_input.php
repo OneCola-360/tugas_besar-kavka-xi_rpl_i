@@ -8,7 +8,7 @@ $gurus = mysqli_query($konek, $sqlguru);
 <body class="bg-light">
 <div class="container mt-5" style="width=50%">
     <div class="card shadow">
-        <div class="card-header">
+        <div class="card-header bg-success">
             <h3>Form Tambah Mapel</h3>
         </div>
         <div class="card-body">
@@ -19,7 +19,7 @@ $gurus = mysqli_query($konek, $sqlguru);
                 </div>
                 <div class="mb-3">
                     <div class="dropdown">
-                        <select name="guru" id="guru" class="btn btn-secondary">
+                        <select name="guru" id="guru" class="btn btn-warning">
                             <?php foreach($gurus as $i): ?>
                                 <li><option value="<?= $i['id']; ?>"><?= $i['nama']; ?></option></li>
                             <?php endforeach ?>

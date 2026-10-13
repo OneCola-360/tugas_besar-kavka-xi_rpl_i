@@ -5,7 +5,7 @@ include("../header.php");
 <body class="bg-light">
 <div class="container mt-5" style="width=50%">
     <div class="card shadow">
-        <div class="card-header">
+        <div class="card-header bg-danger text-light">
             <h3>Form Tambah Admin</h3>
         </div>
         <div class="card-body">

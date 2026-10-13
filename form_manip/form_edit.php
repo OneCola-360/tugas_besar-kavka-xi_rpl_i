@@ -8,7 +8,7 @@ if ($role == 'admin'):
 <body class="bg-light">
 <div class="container mt-5" style="width=50%">
     <div class="card shadow">
-        <div class="card-header">
+        <div class="card-header bg-danger-subtle">
             <h3>Form Edit Data</h3>
         </div>
         <div class="card-body">
@@ -51,7 +51,7 @@ elseif ($role == 'siswa'):
 <body class="bg-light">
 <div class="container mt-5" style="width=50%">
     <div class="card shadow">
-        <div class="card-header">
+        <div class="card-header bg-info-subtle">
             <h3>Form Edit Data</h3>
         </div>
         <div class="card-body">
@@ -113,7 +113,7 @@ elseif ($role == 'siswa'):
 <body class="bg-light">
 <div class="container mt-5" style="width=50%">
     <div class="card shadow">
-        <div class="card-header">
+        <div class="card-header bg-warning-subtle">
             <h3>Form Edit Data</h3>
         </div>
         <div class="card-body">

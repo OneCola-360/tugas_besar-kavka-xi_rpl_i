@@ -14,8 +14,9 @@ $sqlnilai = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (siswa.nam
     <div class="container-lg">
         <?php if ($sqlnilai > 0): ?>
         <?php foreach($sqlnilai as $i): ?>
+            <div class="mt-4">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header text-light" style="background-image: url(../bgblueprint.jpe);">
                     <h3>Nilai Pelajaran <?= $i['nama_mapel'] ?></h3>
                 </div>
                 <div class="card-body">
@@ -41,10 +42,11 @@ $sqlnilai = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (siswa.nam
                     </div>
                 </div>
             </div>
+            </div>
         <?php endforeach; ?>
         <?php else: ?>
             <div class="card">
-                <div class="card-head">
+                <div class="card-header">
                     <h3>Data Belum Di Isi</h3>
                 </div>
             </div>
@@ -64,10 +66,10 @@ $sqlsiswa = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM siswa"), MYSQLI
                     <table id="tabelUser" class="table table-striped table-hover border">
                         <thead>
                             <tr>
-                                <th scope="col" style="width: 10%;">No</th>
-                                <th scope="col">Nama</th>
-                                <th scope="col">Kelas</th>
-                                <th scope="col">Aksi</th>
+                                <th scope="col" style="width: 10%;" class="bg-dark text-light">No</th>
+                                <th scope="col" class="bg-dark text-light">Nama</th>
+                                <th scope="col" class="bg-dark text-light">Kelas</th>
+                                <th scope="col" class="bg-dark text-light">Aksi</th>
                             </tr>
                          </thead>
                          <tbody>
@@ -100,33 +102,38 @@ if ($role == "admin"):
 <body>
     <div class="container-lg">
         <div class="container px-4 text-center">
+            <div class="mt-4">
             <h1>Main Menu</h1>
             <div class="row align-items-start">
                 <div class="col">
                     <div class="card">
-                        <div class="card-head">
+                        <div class="card-header" style="background-image: url(../bgcardboard.jpe);">
                             <p class="p-3"><h3>Tabels</h3></p>
-                            <hr>
                         </div>
                         <div class="card-body">
-                            <h5>Tabel</h5>
+                            <h5>Tabel Akun-Users</h5>
                             <div class="mb-1">
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a href="../tabel/users.php" class="btn btn-outline-primary">Tabel User</a>
-                                    <a href="../tabel/mapel.php" class="btn btn-outline-primary">Tabel Mapel</a>
-                                    <a href="../tabel/siswa.php" class="btn btn-outline-primary">Tabel Siswa</a>
-                                    <a href="../tabel/guru.php" class="btn btn-outline-primary">Tabel Guru</a>
-                                    <a href="../tabel/mengajar.php" class="btn btn-outline-primary">Tabel Mengajar</a>
+                                    <a href="../tabel/siswa.php" class="btn btn-outline-warning">Tabel Siswa</a>
+                                    <a href="../tabel/guru.php" class="btn btn-outline-warning">Tabel Guru</a>
+                                    <a href="../tabel/users.php" class="btn btn-outline-warning">Tabel User</a>
                                 </div>
+                            </div>
+                            <h5>Tabel Mapel</h5>
+                            <div class="mb-1">
+                                <a href="../tabel/mapel.php" class="btn btn-outline-success">Tabel Mapel</a>
+                            </div>
+                            <h5>Tabel Mengajar</h5>
+                            <div class="mb-1">
+                                <a href="../tabel/mengajar.php" class="btn btn-outline-primary">Tabel Mengajar</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col">
                     <div class="card">
-                        <div class="card-head">
+                        <div class="card-header" style="background-image: url(../bgcardboard.jpe);">
                             <p class="p-3"><h3>Buat Baru</h3></p>
-                            <hr>
                         </div>
                         <div class="card-body">
                             <h5>Buat Akun</h5>
@@ -152,6 +159,7 @@ if ($role == "admin"):
                         </div>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </div>

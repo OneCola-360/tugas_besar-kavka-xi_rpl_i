@@ -13,15 +13,15 @@ $sqlrapor = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (nilai_rap
                     <table id="tabelUser" class="table table-striped table-hover border">
                         <thead>
                             <tr>
-                                <th scope="col" style="width: 10%;">No</th>
-                                <th scope="col">Nama</th>
-                                <th scope="col">Kelas</th>
-                                <th scope="col">Mapel</th>
-                                <th scope="col">Nilai KKM</th>
-                                <th scope="col">Nilai Pengetahuan</th>
-                                <th scope="col">Nilai Keterampilan</th>
-                                <th scope="col">Keterangan</th>
-                                <th scope="col">Aksi</th>
+                                <th scope="col" style="width: 10%;" class="bg-dark text-light">No</th>
+                                <th scope="col" class="bg-dark text-light">Nama</th>
+                                <th scope="col" class="bg-dark text-light">Kelas</th>
+                                <th scope="col" class="bg-dark text-light">Mapel</th>
+                                <th scope="col" class="bg-dark text-light">Nilai KKM</th>
+                                <th scope="col" class="bg-dark text-light">Nilai Pengetahuan</th>
+                                <th scope="col" class="bg-dark text-light">Nilai Keterampilan</th>
+                                <th scope="col" class="bg-dark text-light">Keterangan</th>
+                                <th scope="col" class="bg-dark text-light">Aksi</th>
                             </tr>
                          </thead>
                          <tbody>

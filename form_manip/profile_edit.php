@@ -20,7 +20,7 @@ WHERE users.id = $id"), MYSQLI_ASSOC) as $i);
     <body>
         <div class="container mt-5" width="50%">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header bg-dark text-light">
                     <h3>Profile Edit</h3>
                 </div>
                 <div class="card-body">

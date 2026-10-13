@@ -12,7 +12,7 @@ $gurus = mysqli_fetch_all(mysqli_query($konek, $sqlguru), MYSQLI_ASSOC);
 <body class="bg-light">
 <div class="container mt-5" style="width=50%">
     <div class="card shadow">
-        <div class="card-header">
+        <div class="card-header bg-success-subtle">
             <h3>Form Tambah Mapel</h3>
         </div>
         <div class="card-body">

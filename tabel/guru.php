@@ -13,12 +13,12 @@ $o = 1;
                     <table id="tabelUser" class="table table-striped table-hover border">
                         <thead>
                             <tr>
-                                <th scope="col" style="width: 10%;">No</th>
-                                <th scope="col">NIP</th>
-                                <th scope="col">Nama</th>
-                                <th scope="col">Jenis Kelamin</th>
-                                <th scope="col">User ID</th>
-                                <th scope="col">Aksi</th>
+                                <th scope="col" style="width: 10%;" class="bg-dark text-light">No</th>
+                                <th scope="col" class="bg-dark text-light">NIP</th>
+                                <th scope="col" class="bg-dark text-light">Nama</th>
+                                <th scope="col" class="bg-dark text-light">Jenis Kelamin</th>
+                                <th scope="col" class="bg-dark text-light">User ID</th>
+                                <th scope="col" class="bg-dark text-light">Aksi</th>
                             </tr>
                          </thead>
                          <tbody>

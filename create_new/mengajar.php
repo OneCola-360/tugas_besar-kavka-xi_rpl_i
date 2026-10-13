@@ -7,7 +7,7 @@ $mapel = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM mapel"), MYSQLI_AS
 <body class="bg-light">
 <div class="container mt-5" style="width=50%">
     <div class="card shadow">
-        <div class="card-header">
+        <div class="card-header bg-primary">
             <h3>Form Tambah Mengajar</h3>
         </div>
         <div class="card-body">
@@ -15,7 +15,7 @@ $mapel = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM mapel"), MYSQLI_AS
                 <h5>Pilih Pelajar:</h5>
                 <div class="mb-3">
                     <div class="dropdown">
-                        <select name="siswa" id="siswa" class="btn btn-secondary">
+                        <select name="siswa" id="siswa" class="btn btn-info">
                             <?php foreach($siswa as $i): ?>
                                 <li><option value="<?= $i['id']; ?>"><?= $i['nama']; ?></option></li>
                             <?php endforeach ?>
@@ -25,7 +25,7 @@ $mapel = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM mapel"), MYSQLI_AS
                 <h5>Pilih Mapel:</h5>
                 <div class="mb-3">
                     <div class="dropdown">
-                        <select name="mapel" id="mapel" class="btn btn-secondary">
+                        <select name="mapel" id="mapel" class="btn btn-success">
                             <?php foreach($mapel as $i): ?>
                                 <li><option value="<?= $i['id'] ?>"><?= $i['nama']; ?></option></li>
                             <?php endforeach ?>

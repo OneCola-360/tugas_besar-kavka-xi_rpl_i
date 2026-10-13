@@ -19,7 +19,7 @@ $role = $i['role'];
     <body>
         <div class="container mt-5" width="50%">
             <div class="card">
-                <div class="card-header">
+                <div class="card-header bg-info">
                     <h3>Profile <?= $i['username'] ?></h3>
                 </div>
                 <div class="card-body">

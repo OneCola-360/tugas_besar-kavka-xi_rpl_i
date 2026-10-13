@@ -12,15 +12,15 @@ $gurus = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM guru"), MYSQLI_ASS
 <body class="bg-light">
 <div class="container mt-5" style="width=50%">
     <div class="card shadow">
-        <div class="card-header">
-            <h3>Form Tambah Mapel</h3>
+        <div class="card-header bg-primary">
+            <h3>Form Edit Mengajar</h3>
         </div>
         <div class="card-body">
             <form action="../aksi/mengajar/edit.php" method="post">
                 <h5>Pelajar: <?= $siswa ?></h5>
                 <div class="mb-3">
                     <div class="dropdown">
-                        <select name="siswa" id="siswa" class="btn btn-secondary">
+                        <select name="siswa" id="siswa" class="btn btn-info">
                             <?php foreach($siswas as $i): ?>
                                 <li><option value="<?= $i['id']; ?>"><?= $i['nama']; ?></option></li>
                             <?php endforeach ?>
@@ -30,7 +30,7 @@ $gurus = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM guru"), MYSQLI_ASS
                 <h5>Mapel: <?= $mapel; ?></h5>
                 <div class="mb-3">
                     <div class="dropdown">
-                        <select name="mapel" id="mapel" class="btn btn-secondary">
+                        <select name="mapel" id="mapel" class="btn btn-success">
                             <?php foreach($mapels as $i): ?>
                                 <li><option value="<?= $i['id']; ?>"><?= $i['nama']; ?></option></li>
                             <?php endforeach ?>
@@ -40,7 +40,7 @@ $gurus = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM guru"), MYSQLI_ASS
                 <h5>Pengajar: <?= $guru; ?></h5>
                 <div class="mb-3">
                     <div class="dropdown">
-                        <select name="guru" id="guru" class="btn btn-secondary">
+                        <select name="guru" id="guru" class="btn btn-warning">
                             <?php foreach($gurus as $i): ?>
                                 <li><option value="<?= $i['id']; ?>"><?= $i['nama']; ?></option></li>
                             <?php endforeach ?>

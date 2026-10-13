@@ -12,11 +12,11 @@ $sql = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (mengajar.id) A
                     <table id="tabelUser" class="table table-striped table-hover border">
                         <thead>
                             <tr>
-                                <th scope="col" style="width: 10%;">No</th>
-                                <th scope="col">Siswa</th>
-                                <th scope="col">Mata Pelajaran</th>
-                                <th scope="col">Guru</th>
-                                <th scope="col">Aksi</th>
+                                <th scope="col" style="width: 10%;" class="bg-dark text-light">No</th>
+                                <th scope="col" class="bg-dark text-light">Siswa</th>
+                                <th scope="col" class="bg-dark text-light">Mata Pelajaran</th>
+                                <th scope="col" class="bg-dark text-light">Guru</th>
+                                <th scope="col" class="bg-dark text-light">Aksi</th>
                             </tr>
                          </thead>
                          <tbody>

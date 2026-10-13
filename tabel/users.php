@@ -22,11 +22,11 @@ $o = 1;
                     <table id="tabelUser" class="table table-striped table-hover border">
                         <thead>
                             <tr>
-                                <th scope="col" style="width: 10%;">No</th>
-                                <th scope="col">User</th>
-                                <th scope="col">Username</th>
-                                <th scope="col">Role</th>
-                                <th scope="col">Aksi</th>
+                                <th scope="col" style="width: 10%;" class="bg-dark text-light">No</th>
+                                <th scope="col" class="bg-dark text-light">User</th>
+                                <th scope="col" class="bg-dark text-light">Username</th>
+                                <th scope="col" class="bg-dark text-light">Role</th>
+                                <th scope="col" class="bg-dark text-light">Aksi</th>
                             </tr>
                          </thead>
                          <tbody>
