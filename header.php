@@ -66,7 +66,17 @@ $role = $r['role'];
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="../main_menu/main_menu.php">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <div class="btn-group" role="group" aria-label="Basic example" id="btnContainer">
+                            <button class="btn btn-outline-success" onclick="filterSelection('all')"> Reset Filter</button>
+                            <button class="btn btn-outline-primary" onclick="filterSelection('kamu')"> Nilaimu</button>
+                        </div>
+                    </li>
                 </ul>
+                <form class="d-flex" role="search">
+                    <input type="text" id="myInput" onkeyup="searchFunction()" class="form-control me-2" type="search" placeholder="Cari Berdasarkan Nama" aria-label="Search">
+                </form>
                 <span>
                     <a class="nav-link active" aria-current="page" href="../main_menu/profile.php">Profile</a>
                 </span>

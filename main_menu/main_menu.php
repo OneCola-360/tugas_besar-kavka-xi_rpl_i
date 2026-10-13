@@ -8,13 +8,28 @@ $sqlrole = mysqli_fetch_all(mysqli_query($konek, "SELECT role FROM users WHERE i
 foreach ($sqlrole as $r) {};
 $role = $r['role'];
 if ($role == "siswa"):
-$sqlnilai = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (siswa.nama) AS nama, COALESCE (mapel.nama) AS nama_mapel FROM nilai_rapor LEFT JOIN siswa ON nilai_rapor.siswa_id = siswa.id LEFT JOIN mapel ON nilai_rapor.mapel_id = mapel.id LEFT JOIN users ON siswa.user_id = users.id WHERE siswa.user_id = $id"), MYSQLI_ASSOC);
+$sql360 = mysqli_fetch_all(mysqli_query($konek, "SELECT kelas FROM siswa WHERE user_id = $id"), MYSQLI_ASSOC);
+foreach ($sql360 as $l) {};
+$kelas = $l['kelas'];
+$sqlnilai = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (siswa.nama) AS nama, COALESCE (mapel.nama) AS nama_mapel, COALESCE (siswa.user_id) AS akun_id FROM nilai_rapor LEFT JOIN siswa ON nilai_rapor.siswa_id = siswa.id LEFT JOIN mapel ON nilai_rapor.mapel_id = mapel.id LEFT JOIN users ON siswa.user_id = users.id WHERE siswa.user_id = $id OR siswa.kelas = '$kelas'"), MYSQLI_ASSOC);
 ?>
+<style type="text/css">
+.filterDiv {
+  display: none;
+}
+
+.show {
+  display: block;
+}
+</style>
 <body>
     <div class="container-lg">
+        <ul id="list" style="list-style-type: none;">
         <?php if ($sqlnilai > 0): ?>
         <?php foreach($sqlnilai as $i): ?>
+            <li><a href="#" style="display: none;"><?= $i['nama'] ?></a>
             <div class="mt-4">
+            <div class="<?= $i['akun_id'] == $id ? 'filterDiv kamu' : 'filterDiv lainnya' ?>">
             <div class="card">
                 <div class="card-header text-light" style="background-image: url(../bgblueprint.jpe);">
                     <h3>Nilai Pelajaran <?= $i['nama_mapel'] ?></h3>
@@ -43,16 +58,90 @@ $sqlnilai = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (siswa.nam
                 </div>
             </div>
             </div>
+            </div>
+            </li>
         <?php endforeach; ?>
         <?php else: ?>
+            <li>
             <div class="card">
                 <div class="card-header">
                     <h3>Data Belum Di Isi</h3>
                 </div>
             </div>
+            </li>
         <?php endif; ?>
+        </ul>
     </div>
 </body>
+<script>
+filterSelection("all")
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("filterDiv");
+  if (c == "all") c = "";
+  // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+  for (i = 0; i < x.length; i++) {
+    w3RemoveClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+  }
+}
+
+// Show filtered elements
+function w3AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {
+      element.className += " " + arr2[i];
+    }
+  }
+}
+
+// Hide elements that are not selected
+function w3RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);
+    }
+  }
+  element.className = arr1.join(" ");
+}
+
+// Add active class to the current control button (highlight it)
+var btnContainer = document.getElementById("btnContainer");
+var btns = btnContainer.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function() {
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+
+function searchFunction() {
+  // Declare variables
+  var input, filter, ul, li, a, i, txtValue;
+  input = document.getElementById('myInput');
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("list");
+  li = ul.getElementsByTagName('li');
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByTagName("a")[0];
+    txtValue = a.textContent || a.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+</script>
 </html>
 <?php endif; 
 if ($role == "guru"):
