@@ -9,6 +9,12 @@ $siswas = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM siswa"), MYSQLI_A
 $mapels = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM mapel"), MYSQLI_ASSOC);
 $gurus = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM guru"), MYSQLI_ASSOC);
 ?>
+<style>
+    body {
+        background-image: linear-gradient(to left, blue, cyan, white);
+        background-attachment: fixed;
+    }
+</style>
 <body class="bg-light">
 <div class="container mt-5" style="width=50%">
     <div class="card shadow">

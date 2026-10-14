@@ -5,11 +5,21 @@ $sql = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (siswa.id) AS i
 ORDER BY siswa.id asc"), MYSQLI_ASSOC);
 $o = 1;
 ?>
-<body>
+    <style>
+        body {
+            background-image: linear-gradient(to top, cyan, #9ff, white);
+            background-attachment: fixed;
+        }
+    </style>
+    <body>
         <div class="container my-4">
             <div class="row justify-content-center">
                 <div class="col-md-10">
                     <h2>Tabel Siswa</h2>
+                    <span>
+                        <div class="mb-1"><input type="text" id="srcName" onkeyup="searchByName()" class="form-control me-2" type="search" placeholder="Cari Berdasarkan Nama" aria-label="Search"></div>
+                        <div class="mb-1"><input type="text" id="srcKelas" onkeyup="searchByKelas()" class="form-control me-2" type="search" placeholder="Cari Berdasarkan Kelas" aria-label="Search"></div>
+                    </span>
                     <table id="tabelUser" class="table table-striped table-hover border">
                         <thead>
                             <tr>
@@ -22,14 +32,14 @@ $o = 1;
                                 <th scope="col" class="bg-dark text-light">Aksi</th>
                             </tr>
                          </thead>
-                         <tbody>
+                         <tbody id="list">
                             <?php if (count($sql) > 0): ?>
                                 <?php foreach($sql as $i): ?>
-                                    <tr>
+                                    <tr class="isi">
                                         <td><?= $o++; ?></td>
                                         <td><?= $i['nis']; ?></td>
-                                        <td><?= $i['nama']; ?></td>
-                                        <td><?= $i['kelas']; ?></td>
+                                        <td class="nama"><?= $i['nama']; ?></td>
+                                        <td class="kelas"><?= $i['kelas']; ?></td>
                                         <td><?= $i['jenis_kelamin']; ?></td>
                                         <td><?= $i['user_id']; ?></td>
                                         <td>
@@ -49,4 +59,45 @@ $o = 1;
             </div>
         </div>
     </body>
+    <script>
+function searchByName() {
+  // Declare variables
+  var input, filter, ul, li, a, i, txtValue;
+  input = document.getElementById('srcName');
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("list");
+  li = ul.getElementsByClassName('isi');
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByClassName("nama")[0];
+    txtValue = a.textContent || a.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+
+function searchByKelas() {
+  // Declare variables
+  var input, filter, ul, li, a, i, txtValue;
+  input = document.getElementById('srcKelas');
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("list");
+  li = ul.getElementsByClassName('isi');
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByClassName("kelas")[0];
+    txtValue = a.textContent || a.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+    </script>
 </html>

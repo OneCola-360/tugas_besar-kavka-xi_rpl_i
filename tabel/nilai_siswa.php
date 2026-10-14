@@ -5,6 +5,12 @@ $id = $_GET['siswa_id'];
 $o = 1;
 $sqlrapor = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (nilai_rapor.id) AS rapor_id, COALESCE (siswa.id) AS siswa_id, COALESCE (mapel.id) AS mapel_id, COALESCE (siswa.nama) AS nama, COALESCE (mapel.nama) AS nama_mapel FROM nilai_rapor LEFT JOIN siswa ON nilai_rapor.siswa_id = siswa.id LEFT JOIN mapel ON nilai_rapor.mapel_id = mapel.id WHERE nilai_rapor.siswa_id = $id"), MYSQLI_ASSOC);
 ?>
+    <style>
+        body {
+            background-image: linear-gradient(to top, green, lime, cyan, white);
+            background-attachment: fixed;
+        }
+    </style>
     <body>
         <div class="container my-4">
             <div class="row justify-content-center">

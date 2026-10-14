@@ -75,7 +75,8 @@ $role = $r['role'];
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
-                    <input type="text" id="myInput" onkeyup="searchFunction()" class="form-control me-2" type="search" placeholder="Cari Berdasarkan Nama" aria-label="Search">
+                    <input type="text" id="srcName" onkeyup="searchByName()" class="form-control me-2" type="search" placeholder="Cari Berdasarkan Nama" aria-label="Search">
+                    <input type="text" id="srcKelas" onkeyup="searchByKelas()" class="form-control me-2" type="search" placeholder="Cari Berdasarkan Kelas" aria-label="Search">
                 </form>
                 <span>
                     <a class="nav-link active" aria-current="page" href="../main_menu/profile.php">Profile</a>

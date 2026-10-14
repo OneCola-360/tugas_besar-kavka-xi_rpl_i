@@ -11,7 +11,7 @@ if ($role == "siswa"):
 $sql360 = mysqli_fetch_all(mysqli_query($konek, "SELECT kelas FROM siswa WHERE user_id = $id"), MYSQLI_ASSOC);
 foreach ($sql360 as $l) {};
 $kelas = $l['kelas'];
-$sqlnilai = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (siswa.nama) AS nama, COALESCE (mapel.nama) AS nama_mapel, COALESCE (siswa.user_id) AS akun_id FROM nilai_rapor LEFT JOIN siswa ON nilai_rapor.siswa_id = siswa.id LEFT JOIN mapel ON nilai_rapor.mapel_id = mapel.id LEFT JOIN users ON siswa.user_id = users.id WHERE siswa.user_id = $id OR siswa.kelas = '$kelas'"), MYSQLI_ASSOC);
+$sqlnilai = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (siswa.nama) AS nama, COALESCE (mapel.nama) AS nama_mapel, COALESCE (siswa.user_id) AS akun_id FROM nilai_rapor LEFT JOIN siswa ON nilai_rapor.siswa_id = siswa.id LEFT JOIN mapel ON nilai_rapor.mapel_id = mapel.id LEFT JOIN users ON siswa.user_id = users.id"), MYSQLI_ASSOC);
 ?>
 <style type="text/css">
 .filterDiv {
@@ -21,15 +21,22 @@ $sqlnilai = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (siswa.nam
 .show {
   display: block;
 }
+
+body {
+    background-image: linear-gradient(to top, blue, cyan, white);
+    background-attachment: fixed;
+}
 </style>
 <body>
     <div class="container-lg">
         <ul id="list" style="list-style-type: none;">
         <?php if ($sqlnilai > 0): ?>
         <?php foreach($sqlnilai as $i): ?>
-            <li><a href="#" style="display: none;"><?= $i['nama'] ?></a>
+            <li class="isi">
+            <a href="#" style="display: none;" class="nama"><?= $i['nama'] ?></a>
+            <a href="#" style="display: none;" class="kelas"><?= $i['kelas'] ?></a>
             <div class="mt-4">
-            <div class="<?= $i['akun_id'] == $id ? 'filterDiv kamu' : 'filterDiv lainnya' ?>">
+            <div class="filterDiv <?= $i['akun_id'] == $id ? 'kamu' : 'orangLain' ?>">
             <div class="card">
                 <div class="card-header text-light" style="background-image: url(../bgblueprint.jpe);">
                     <h3>Nilai Pelajaran <?= $i['nama_mapel'] ?></h3>
@@ -122,17 +129,37 @@ for (var i = 0; i < btns.length; i++) {
   });
 }
 
-function searchFunction() {
+function searchByName() {
   // Declare variables
   var input, filter, ul, li, a, i, txtValue;
-  input = document.getElementById('myInput');
+  input = document.getElementById('srcName');
   filter = input.value.toUpperCase();
   ul = document.getElementById("list");
-  li = ul.getElementsByTagName('li');
+  li = ul.getElementsByClassName('isi');
 
   // Loop through all list items, and hide those who don't match the search query
   for (i = 0; i < li.length; i++) {
-    a = li[i].getElementsByTagName("a")[0];
+    a = li[i].getElementsByClassName("nama")[0];
+    txtValue = a.textContent || a.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+
+function searchByKelas() {
+  // Declare variables
+  var input, filter, ul, li, a, i, txtValue;
+  input = document.getElementById('srcKelas');
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("list");
+  li = ul.getElementsByClassName('isi');
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByClassName("kelas")[0];
     txtValue = a.textContent || a.innerText;
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
       li[i].style.display = "";
@@ -147,6 +174,12 @@ function searchFunction() {
 if ($role == "guru"):
 $sqlsiswa = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM siswa"), MYSQLI_ASSOC);
 ?>
+    <style>
+        body {
+            background-image: linear-gradient(to top, blue, cyan, lime, white);
+            background-attachment: fixed;
+        }
+    </style>
     <body>
         <div class="container my-4" >
             <div class="row justify-content-center">
@@ -188,6 +221,12 @@ $sqlsiswa = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM siswa"), MYSQLI
 <?php endif;
 if ($role == "admin"):
 ?>
+<style>
+    body {
+        background-image: linear-gradient(to top, #842, #c84, white);
+        background-attachment: fixed;
+    }
+</style>
 <body>
     <div class="container-lg">
         <div class="container px-4 text-center">

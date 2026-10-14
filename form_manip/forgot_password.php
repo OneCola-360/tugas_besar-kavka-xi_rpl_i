@@ -7,6 +7,12 @@ $id = $_SESSION['akun_id'];
     <head>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     </head>
+    <style>
+        body {
+            background-image: radial-gradient(black, red, orange, yellow);
+            background-attachment: fixed;
+        }
+    </style>
     <body>
         <div class="container mt-5" width="50%">
             <div class="card">

@@ -5,7 +5,13 @@ include("../header.php");
 $sqlguru = "SELECT nama, id FROM guru";
 $gurus = mysqli_query($konek, $sqlguru);
 ?>
-<body class="bg-light">
+<style>
+    body {
+        background-image: linear-gradient(to right, green, lime, white);
+        background-attachment: fixed;
+    }
+</style>
+<body>
 <div class="container mt-5" style="width=50%">
     <div class="card shadow">
         <div class="card-header bg-success">

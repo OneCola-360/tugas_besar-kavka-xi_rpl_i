@@ -5,6 +5,12 @@ $id = $_GET['id'];
 $role = $_GET['role'] ?? 'admin';
 if ($role == 'admin'):
 ?>
+<style>
+    body {
+        background-image: linear-gradient(to left, red, orange, yellow, white);
+        background-attachment: fixed;
+    }
+</style>
 <body class="bg-light">
 <div class="container mt-5" style="width=50%">
     <div class="card shadow">
@@ -48,6 +54,12 @@ elseif ($role == 'siswa'):
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+<style>
+    body {
+        background-image: linear-gradient(to left, cyan, lightblue, white);
+        background-attachment: fixed;
+    }
+</style>
 <body class="bg-light">
 <div class="container mt-5" style="width=50%">
     <div class="card shadow">
@@ -110,6 +122,12 @@ elseif ($role == 'siswa'):
 </body>
 </html>
 <?php elseif ($role == "guru"): ?>
+<style>
+    body {
+        background-image: linear-gradient(to left, orange, yellow, white);
+        background-attachment: fixed;
+    }
+</style>
 <body class="bg-light">
 <div class="container mt-5" style="width=50%">
     <div class="card shadow">

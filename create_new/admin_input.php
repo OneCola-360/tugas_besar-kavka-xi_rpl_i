@@ -2,6 +2,12 @@
 require("../konek.php");
 include("../header.php");
 ?>
+<style>
+    body {
+        background-image: linear-gradient(to right, red, orange, yellow, white);
+        background-attachment: fixed;
+    }
+</style>
 <body class="bg-light">
 <div class="container mt-5" style="width=50%">
     <div class="card shadow">

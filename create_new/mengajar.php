@@ -4,6 +4,12 @@ include("../header.php");
 $siswa = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM siswa"), MYSQLI_ASSOC);
 $mapel = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM mapel"), MYSQLI_ASSOC);
 ?>
+<style>
+    body {
+        background-image: linear-gradient(to right, blue, cyan, white);
+        background-attachment: fixed;
+    }
+</style>
 <body class="bg-light">
 <div class="container mt-5" style="width=50%">
     <div class="card shadow">

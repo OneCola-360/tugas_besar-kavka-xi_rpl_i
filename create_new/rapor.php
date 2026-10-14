@@ -4,6 +4,12 @@ include("../header.php");
 $akun_id = $_SESSION['akun_id'];
 $sqlmapel = mysqli_fetch_all(mysqli_query($konek, "SELECT mapel.id, mapel.nama, mapel.kode_mapel FROM mapel LEFT JOIN guru ON mapel.guru_id = guru.id WHERE guru.user_id = $akun_id"), MYSQLI_ASSOC);
 ?>
+<style>
+    body {
+        background-image: linear-gradient(to right, green, lime, cyan, lightblue, white);
+        background-attachment: fixed;
+    }
+</style>
 <body>
 <div class="container mt-5" style="width=50%">
     <div class="card shadow">

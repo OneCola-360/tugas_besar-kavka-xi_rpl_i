@@ -4,7 +4,13 @@ include("../header.php");
 $o = 1;
 $sql = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (mengajar.id) AS id, COALESCE (siswa.id) AS id_siswa, COALESCE (mapel.id) AS id_mapel, COALESCE (guru.id) AS id_guru, COALESCE (mapel.nama) AS nama_mapel, COALESCE (siswa.nama) AS nama_siswa, COALESCE (guru.nama) AS nama_guru FROM mengajar LEFT JOIN siswa ON mengajar.siswa_id = siswa.id LEFT JOIN mapel ON mengajar.mapel_id = mapel.id LEFT JOIN guru ON mapel.guru_id = guru.id ORDER BY mengajar.id asc"), MYSQLI_ASSOC);
 ?>
-<body>
+    <style>
+        body {
+            background-image: linear-gradient(to top, blue, cyan, white);
+            background-attachment: fixed;
+        }
+    </style>
+    <body>
         <div class="container my-4">
             <div class="row justify-content-center">
                 <div class="col-md-10">

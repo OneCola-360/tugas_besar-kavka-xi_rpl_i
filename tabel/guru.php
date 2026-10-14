@@ -5,13 +5,19 @@ $sql = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (guru.id) AS id
 ORDER BY guru.id asc"), MYSQLI_ASSOC);
 $o = 1;
 ?>
-<body>
+    <style>
+        body {
+            background-image: linear-gradient(to top, orange, yellow, white);
+            background-attachment: fixed;
+        }
+    </style>
+    <body>
         <div class="container my-4">
             <div class="row justify-content-center">
                 <div class="col-md-10">
                     <h2>Tabel Guru</h2>
                     <span>
-                        <input type="text" id="myInput" onkeyup="searchFunction()" class="form-control me-2" type="search" placeholder="Cari Berdasarkan Nama" aria-label="Search" style="display:none;">
+                        <div class="mb-1"><input type="text" id="myInput" onkeyup="searchFunction()" class="form-control me-2" type="search" placeholder="Cari Berdasarkan Nama" aria-label="Search"></div>
                     </span>
                     <table id="tabelUser" class="table table-striped table-hover border">
                         <thead>

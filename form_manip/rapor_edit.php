@@ -8,6 +8,12 @@ $pengetahuan = $_GET['pengetahuan'];
 $keterampilan = $_GET['keterampilan'];
 $keterangan = $_GET['keterangan'];
 ?>
+<style>
+    body {
+        background-image: linear-gradient(to left, blue, cyan, lime, white);
+        background-attachment: fixed;
+    }
+</style>
 <body class="bg-light">
 <div class="container mt-5" style="width=50%">
     <div class="card shadow">
