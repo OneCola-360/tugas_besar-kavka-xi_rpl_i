@@ -15,6 +15,11 @@ $sql = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (mengajar.id) A
             <div class="row justify-content-center">
                 <div class="col-md-10">
                     <h2>Tabel Mengajar</h2>
+                    <span>
+                        <div class="mb-1"><input type="text" id="srcSiswa" onkeyup="searchBySiswa()" class="form-control me-2" type="search" placeholder="Cari Berdasarkan Siswa" aria-label="Search"></div>
+                        <div class="mb-1"><input type="text" id="srcMapel" onkeyup="searchByMapel()" class="form-control me-2" type="search" placeholder="Cari Berdasarkan Mapel" aria-label="Search"></div>
+                        <div class="mb-3"><input type="text" id="srcGuru" onkeyup="searchByGuru()" class="form-control me-2" type="search" placeholder="Cari Berdasarkan Guru" aria-label="Search"></div>
+                    </span>
                     <table id="tabelUser" class="table table-striped table-hover border">
                         <thead>
                             <tr>
@@ -25,14 +30,14 @@ $sql = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (mengajar.id) A
                                 <th scope="col" class="bg-dark text-light">Aksi</th>
                             </tr>
                          </thead>
-                         <tbody>
+                         <tbody id="list">
                             <?php if (count($sql) > 0): ?>
                                 <?php foreach($sql as $i): ?>
-                                    <tr>
+                                    <tr class="isi">
                                         <td><?= $o++; ?></td>
-                                        <td><?= $i['nama_siswa']; ?></td>
-                                        <td><?= $i['nama_mapel']; ?></td>
-                                        <td><?= $i['nama_guru']; ?></td>
+                                        <td class="siswa"><?= $i['nama_siswa']; ?></td>
+                                        <td class="mapel"><?= $i['nama_mapel']; ?></td>
+                                        <td class="guru"><?= $i['nama_guru']; ?></td>
                                         <td>
                                             <a href="../form_manip/mengajar_edit.php?id=<?= $i['id']; ?>&&siswa=<?= $i['nama_siswa']; ?>&&guru=<?= $i['nama_guru']; ?>&&mapel=<?= $i['nama_mapel']; ?>" class="btn btn-warning btn-sm">Edit</a>
                                             <a href="../aksi/mengajar/hapus.php?id=<?= $i['id']; ?>" onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')" class="btn btn-danger btn-sm">Hapus</a>
@@ -50,4 +55,65 @@ $sql = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (mengajar.id) A
             </div>
         </div>
     </body>
+    <script>
+    function searchBySiswa() {
+  // Declare variables
+  var input, filter, ul, li, a, i, txtValue;
+  input = document.getElementById('srcSiswa');
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("list");
+  li = ul.getElementsByClassName('isi');
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByClassName("siswa")[0];
+    txtValue = a.textContent || a.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+
+function searchByGuru() {
+  // Declare variables
+  var input, filter, ul, li, a, i, txtValue;
+  input = document.getElementById('srcGuru');
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("list");
+  li = ul.getElementsByClassName('isi');
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByClassName("guru")[0];
+    txtValue = a.textContent || a.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+
+function searchByMapel() {
+  // Declare variables
+  var input, filter, ul, li, a, i, txtValue;
+  input = document.getElementById('srcMapel');
+  filter = input.value.toUpperCase();
+  ul = document.getElementById("list");
+  li = ul.getElementsByClassName('isi');
+
+  // Loop through all list items, and hide those who don't match the search query
+  for (i = 0; i < li.length; i++) {
+    a = li[i].getElementsByClassName("mapel")[0];
+    txtValue = a.textContent || a.innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      li[i].style.display = "";
+    } else {
+      li[i].style.display = "none";
+    }
+  }
+}
+    </script>
 </html>

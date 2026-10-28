@@ -22,8 +22,8 @@ if ($role == "admin") {
     }
 } 
 if ($role == "siswa") {
-    mysqli_query($konek, "DELETE siswa, users FROM siswa JOIN users ON users.id = siswa.user_id WHERE siswa.user_id =" . $id);
-    if (mysqli_query($konek, "DELETE siswa, users FROM siswa JOIN users ON users.id = siswa.user_id WHERE siswa.user_id =" . $id)) {
+    mysqli_query($konek, "DELETE siswa, users FROM siswa LEFT JOIN users ON users.id = siswa.user_id WHERE siswa.user_id =" . $id);
+    if (mysqli_query($konek, "DELETE siswa, users FROM siswa LEFT JOIN users ON users.id = siswa.user_id WHERE siswa.user_id =" . $id)) {
         echo"<script>alert('User berhasil dihapus'); window.location.href='../../tabel/users.php'</script>";
     } else {
         echo"<script>alert('User gagal dihapus'); window.location.href='../../tabel/users.php'</script>";

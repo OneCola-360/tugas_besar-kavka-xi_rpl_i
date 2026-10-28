@@ -5,7 +5,7 @@
     </head>
     <style>
         body {
-            background-image: radial-gradient(black, gray, white);
+            background-image: linear-gradient(to top, black, gray, white);
             background-attachment: fixed;
         }
     </style>

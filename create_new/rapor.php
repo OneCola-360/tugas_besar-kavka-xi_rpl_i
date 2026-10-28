@@ -6,7 +6,7 @@ $sqlmapel = mysqli_fetch_all(mysqli_query($konek, "SELECT mapel.id, mapel.nama, 
 ?>
 <style>
     body {
-        background-image: linear-gradient(to right, green, lime, cyan, lightblue, white);
+        background-image: linear-gradient(to right, lightgreen, palegreen, white);
         background-attachment: fixed;
     }
 </style>

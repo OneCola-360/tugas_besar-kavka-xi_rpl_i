@@ -17,7 +17,7 @@ $o = 1;
                 <div class="col-md-10">
                     <h2>Tabel Guru</h2>
                     <span>
-                        <div class="mb-1"><input type="text" id="myInput" onkeyup="searchFunction()" class="form-control me-2" type="search" placeholder="Cari Berdasarkan Nama" aria-label="Search"></div>
+                        <div class="mb-3"><input type="text" id="myInput" onkeyup="searchFunction()" class="form-control me-2" type="search" placeholder="Cari Berdasarkan Nama" aria-label="Search"></div>
                     </span>
                     <table id="tabelUser" class="table table-striped table-hover border">
                         <thead>

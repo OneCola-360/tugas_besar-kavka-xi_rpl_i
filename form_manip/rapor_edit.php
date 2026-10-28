@@ -10,7 +10,7 @@ $keterangan = $_GET['keterangan'];
 ?>
 <style>
     body {
-        background-image: linear-gradient(to left, blue, cyan, lime, white);
+        background-image: linear-gradient(to left, lightgreen, palegreen, white);
         background-attachment: fixed;
     }
 </style>

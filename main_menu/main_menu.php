@@ -12,6 +12,8 @@ $sql360 = mysqli_fetch_all(mysqli_query($konek, "SELECT kelas FROM siswa WHERE u
 foreach ($sql360 as $l) {};
 $kelas = $l['kelas'];
 $sqlnilai = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (siswa.nama) AS nama, COALESCE (mapel.nama) AS nama_mapel, COALESCE (siswa.user_id) AS akun_id FROM nilai_rapor LEFT JOIN siswa ON nilai_rapor.siswa_id = siswa.id LEFT JOIN mapel ON nilai_rapor.mapel_id = mapel.id LEFT JOIN users ON siswa.user_id = users.id"), MYSQLI_ASSOC);
+$nilairata_rata = mysqli_fetch_all(mysqli_query($konek, "SELECT AVG(nilai_rapor.nilai_keterampilan) AS keterampilan, AVG(nilai_rapor.nilai_pengetahuan) AS pengetahuan FROM nilai_rapor LEFT JOIN siswa ON nilai_rapor.siswa_id = siswa.id WHERE siswa.user_id = $id"), MYSQLI_ASSOC);
+foreach ($nilairata_rata as $nilai);
 ?>
 <style type="text/css">
 .filterDiv {
@@ -23,61 +25,81 @@ $sqlnilai = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (siswa.nam
 }
 
 body {
-    background-image: linear-gradient(to top, blue, cyan, white);
+    background-image: linear-gradient(to top, #44f, #88f, white);
     background-attachment: fixed;
 }
 </style>
 <body>
     <div class="container-lg">
-        <ul id="list" style="list-style-type: none;">
-        <?php if ($sqlnilai > 0): ?>
-        <?php foreach($sqlnilai as $i): ?>
-            <li class="isi">
-            <a href="#" style="display: none;" class="nama"><?= $i['nama'] ?></a>
-            <a href="#" style="display: none;" class="kelas"><?= $i['kelas'] ?></a>
-            <div class="mt-4">
-            <div class="filterDiv <?= $i['akun_id'] == $id ? 'kamu' : 'orangLain' ?>">
-            <div class="card">
-                <div class="card-header text-light" style="background-image: url(../bgblueprint.jpe);">
-                    <h3>Nilai Pelajaran <?= $i['nama_mapel'] ?></h3>
-                </div>
-                <div class="card-body">
-                    <div class="mb-1">
-                        <h5>Nama: <?= $i['nama'] ?></h5>
-                    </div>
-                    <div class="mb-1">
-                        <h5>Kelas: <?= $i['kelas'] ?></h5>
-                    </div>
-                    <hr>
-                    <div class="mb-1">
-                        <h5>Nilai KKM: <?= $i['nilai_kkm'] ?></h5>
-                    </div>
-                    <div class="mb-1">
-                        <h5>Nilai Pengetahuan: <?= $i['nilai_pengetahuan'] ?></h5>
-                    </div>
-                    <div class="mb-1">
-                        <h5>Nilai Keterampilan: <?= $i['nilai_keterampilan'] ?></h5>
-                    </div>
-                    <hr>
-                    <div class="mb-1">
-                        <h5>Keterangan: <?= $i['keterangan'] ?></h5>
+        <div class="container px-4">
+            <div class="row align-items-start">
+                <div class="col">
+                    <div class="mt-4">
+                        <div class="card w-100">
+                            <div class="card-header" style="background-image: linear-gradient(to right, darkblue, blue, cyan);">
+                                <h3 class="text-light">Summary</h3>
+                            </div>
+                            <div class="card-body">
+                                <h3>Nilai Rata-Rata</h3>
+                                <h5>Nilai Pengetahuan: <?= intval($nilai['pengetahuan']) ?></h5>
+                                <h5>Nilai Keterampilan: <?= intval($nilai['keterampilan']) ?></h5>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            </div>
-            </div>
-            </li>
-        <?php endforeach; ?>
-        <?php else: ?>
-            <li>
-            <div class="card">
-                <div class="card-header">
-                    <h3>Data Belum Di Isi</h3>
+                <div class="col">
+                    <ul id="list" style="list-style-type: none;">
+                    <?php if ($sqlnilai > 0): ?>
+                    <?php foreach($sqlnilai as $i): ?>
+                        <li class="isi">
+                        <a href="#" style="display: none;" class="nama"><?= $i['nama'] ?></a>
+                        <a href="#" style="display: none;" class="kelas"><?= $i['kelas'] ?></a>
+                        <div class="mt-4">
+                            <div class="filterDiv <?= $i['akun_id'] == $id ? 'kamu' : 'orangLain' ?>">
+                                <div class="card">
+                                    <div class="card-header text-light" style="background-image: url(../bgblueprint.jpe);">
+                                        <h3>Nilai Pelajaran <?= $i['nama_mapel'] ?></h3>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="mb-1">
+                                            <h5>Nama: <?= $i['nama'] ?></h5>
+                                        </div>
+                                        <div class="mb-1">
+                                            <h5>Kelas: <?= $i['kelas'] ?></h5>
+                                        </div>
+                                        <hr>
+                                        <div class="mb-1">
+                                            <h5>Nilai KKM: <?= $i['nilai_kkm'] ?></h5>
+                                        </div>
+                                        <div class="mb-1">
+                                            <h5>Nilai Pengetahuan: <?= $i['nilai_pengetahuan'] ?></h5>
+                                        </div>
+                                        <div class="mb-1">
+                                            <h5>Nilai Keterampilan: <?= $i['nilai_keterampilan'] ?></h5>
+                                        </div>
+                                        <hr>
+                                        <div class="mb-1">
+                                            <h5>Keterangan: <?= $i['keterangan'] ?></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </li>
+                    <?php endforeach; ?>
+                        <?php else: ?>
+                            <li>
+                                <div class="card">
+                                    <div class="card-header">
+                                        <h3>Data Belum Di Isi</h3>
+                                    </div>
+                                </div>
+                            </li>
+                        <?php endif; ?>
+                    </ul>
                 </div>
             </div>
-            </li>
-        <?php endif; ?>
-        </ul>
+        </div>
     </div>
 </body>
 <script>
@@ -176,7 +198,7 @@ $sqlsiswa = mysqli_fetch_all(mysqli_query($konek, "SELECT * FROM siswa"), MYSQLI
 ?>
     <style>
         body {
-            background-image: linear-gradient(to top, blue, cyan, lime, white);
+            background-image: linear-gradient(to top, aquamarine, paleturquoise, white);
             background-attachment: fixed;
         }
     </style>
@@ -223,7 +245,7 @@ if ($role == "admin"):
 ?>
 <style>
     body {
-        background-image: linear-gradient(to top, #842, #c84, white);
+        background-image: linear-gradient(to top, #864, #ca8, white);
         background-attachment: fixed;
     }
 </style>
@@ -281,7 +303,7 @@ if ($role == "admin"):
                             <h5>Buat Data Mengajar</h5>
                             <div class="mb-1">
                                 <div class="btn-group" role="group" aria-label="Basic example">
-                                    <a href="../create_new/mengajar.php" class="btn btn-outline-primary">Tabel Mapel</a>
+                                    <a href="../create_new/mengajar.php" class="btn btn-outline-primary">Buat Mengajar</a>
                                 </div>
                             </div>
                         </div>

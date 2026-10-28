@@ -18,7 +18,7 @@ $o = 1;
                     <h2>Tabel Siswa</h2>
                     <span>
                         <div class="mb-1"><input type="text" id="srcName" onkeyup="searchByName()" class="form-control me-2" type="search" placeholder="Cari Berdasarkan Nama" aria-label="Search"></div>
-                        <div class="mb-1"><input type="text" id="srcKelas" onkeyup="searchByKelas()" class="form-control me-2" type="search" placeholder="Cari Berdasarkan Kelas" aria-label="Search"></div>
+                        <div class="mb-3"><input type="text" id="srcKelas" onkeyup="searchByKelas()" class="form-control me-2" type="search" placeholder="Cari Berdasarkan Kelas" aria-label="Search"></div>
                     </span>
                     <table id="tabelUser" class="table table-striped table-hover border">
                         <thead>

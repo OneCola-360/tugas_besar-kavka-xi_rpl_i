@@ -9,7 +9,7 @@ $id = $_SESSION['akun_id'];
     </head>
     <style>
         body {
-            background-image: radial-gradient(black, red, orange, yellow);
+            background-image: radial-gradient(aqua, aquamarine, lightblue);
             background-attachment: fixed;
         }
     </style>
@@ -18,7 +18,6 @@ $id = $_SESSION['akun_id'];
             <div class="card">
                 <div class="card-header bg-dark text-light">
                     <h3>Profile Edit</h3>
-                    <hr>
                 </div>
                 <div class="card-body">
                     <form action="../aksi/akun/akun_pass.php" method="post">

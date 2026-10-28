@@ -7,7 +7,7 @@ $sqlrapor = mysqli_fetch_all(mysqli_query($konek, "SELECT *, COALESCE (nilai_rap
 ?>
     <style>
         body {
-            background-image: linear-gradient(to top, green, lime, cyan, white);
+            background-image: linear-gradient(to top, lightgreen, palegreen, white);
             background-attachment: fixed;
         }
     </style>
